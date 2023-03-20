@@ -4,6 +4,33 @@
   
   
   <entry>
+    <title>搭建博客</title>
+    <link href="/2023/03/18/%E6%90%AD%E5%BB%BA%E5%8D%9A%E5%AE%A2/"/>
+    <url>/2023/03/18/%E6%90%AD%E5%BB%BA%E5%8D%9A%E5%AE%A2/</url>
+    
+    <content type="html"><![CDATA[<h1 id="搭建Hexo博客"><a href="#搭建Hexo博客" class="headerlink" title="搭建Hexo博客"></a>搭建Hexo博客</h1><h2 id="1、安装node-js"><a href="#1、安装node-js" class="headerlink" title="1、安装node.js"></a>1、安装node.js</h2><p><a href="https://blog.csdn.net/qq_40712862/article/details/120231621">安装Nodejs</a></p><h2 id="2、注册github"><a href="#2、注册github" class="headerlink" title="2、注册github"></a>2、注册github</h2><p><a href="https://github.com/">github</a></p><h2 id="3、安装hexo"><a href="#3、安装hexo" class="headerlink" title="3、安装hexo"></a>3、安装hexo</h2><p>新建文件夹，打开cmd，输入命令<code>npm install hexo-cli -g</code><br><code>hexo -v</code>出现版本号即安装成功</p><p>卸载hexo：<br>卸载命令：卸载成功后npm文件夹会消失<code>npm uninstall hexo-cli -g</code></p><p>如果遇到权限问题：</p><p><img src="https://fastly.jsdelivr.net/gh/xuzengsong/picbed@main//img/image-20230318105214715.png" alt="image-20230318105214715"></p><p>删除本机电脑用户目录下的.npmrc文件：<code>C:\Users\&#123;当前登录的用户名&#125;\.npmrc</code></p><h2 id="4、生成本地静态网页"><a href="#4、生成本地静态网页" class="headerlink" title="4、生成本地静态网页"></a>4、生成本地静态网页</h2><ul><li><code>hexo init 博客名称</code>初始化</li><li><code>cd 博客名称</code>进入文件夹，<code>npm install</code>安装依赖</li><li><code>hexo g</code>生成静态网页</li><li><code>hexo s</code>打开本地预览</li><li><code>hexo clean</code>，清除缓存文件 db.json 和已生成的静态文件在 ./public/文件夹下</li></ul><h2 id="5、将Hexo部署到Github"><a href="#5、将Hexo部署到Github" class="headerlink" title="5、将Hexo部署到Github"></a>5、将Hexo部署到Github</h2><h3 id="1-Github创建个人仓库"><a href="#1-Github创建个人仓库" class="headerlink" title="1.Github创建个人仓库"></a>1.Github创建个人仓库</h3><figure class="highlight lua"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><code class="hljs lua">首先，需要有一个github账号。登上账号后建一个仓库：仓库名为你的用户名.github.<span class="hljs-built_in">io</span>，<br>举例如下：<br>创建一个和你用户名相同的仓库，后面加.github.<span class="hljs-built_in">io</span>，<br>只有这样，将来要部署到GitHub的时候，才会被识别，也就是xxxx.github.<span class="hljs-built_in">io</span>，其中xxx就是你注册GitHub的用户名.<br></code></pre></td></tr></table></figure><h3 id="2-生成ssh添加到Github"><a href="#2-生成ssh添加到Github" class="headerlink" title="2.生成ssh添加到Github"></a>2.生成ssh添加到Github</h3><figure class="highlight"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs">在Github上创建仓库完成之后，需要设置ssh免密登录<br></code></pre></td></tr></table></figure><h3 id="3-打开cmd窗口：执行如下命令："><a href="#3-打开cmd窗口：执行如下命令：" class="headerlink" title="3.打开cmd窗口：执行如下命令："></a>3.打开cmd窗口：执行如下命令：</h3><figure class="highlight stylus"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><code class="hljs stylus">git config <span class="hljs-attr">--global</span> user<span class="hljs-selector-class">.name</span> <span class="hljs-string">&quot;yourname&quot;</span><br>git config <span class="hljs-attr">--global</span> user<span class="hljs-selector-class">.email</span> <span class="hljs-string">&quot;youremail&quot;</span><br></code></pre></td></tr></table></figure><h3 id="4-接着进入到家目录：C-Users-libinbin，右击打开git-bash-。"><a href="#4-接着进入到家目录：C-Users-libinbin，右击打开git-bash-。" class="headerlink" title="4.接着进入到家目录：C:\Users\libinbin，右击打开git bash 。"></a>4.接着进入到家目录：C:\Users\libinbin，右击打开git bash 。</h3><p>输入：</p><figure class="highlight angelscript"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs angelscript">ssh-keygen -t rsa -C <span class="hljs-symbol">XXXXXXXXXXXXX@</span>qq.com<br></code></pre></td></tr></table></figure><h3 id="5-接着就会发现C-Users-libinbin下多了一个-ssh目录，打开后有一个公钥，一个私钥。id-rsa-pub是公钥，我们需要打开它，复制里面的内容。"><a href="#5-接着就会发现C-Users-libinbin下多了一个-ssh目录，打开后有一个公钥，一个私钥。id-rsa-pub是公钥，我们需要打开它，复制里面的内容。" class="headerlink" title="5.接着就会发现C:\Users\libinbin下多了一个.ssh目录，打开后有一个公钥，一个私钥。id_rsa.pub是公钥，我们需要打开它，复制里面的内容。"></a>5.接着就会发现C:\Users\libinbin下多了一个.ssh目录，打开后有一个公钥，一个私钥。id_rsa.pub是公钥，我们需要打开它，复制里面的内容。</h3><p>然后进入github：</p><p>点击setings</p><p>进行以下操作</p><p>发现我们需要一个密钥，把我们刚刚复制的密钥粘进去，title随便起</p><p>点击 Add SSH Key</p><h2 id="6-进行部署"><a href="#6-进行部署" class="headerlink" title="6.进行部署"></a>6.进行部署</h2><p>这一步，我们就可以将hexo和GitHub关联起来，也就是将hexo生成的文章部署到GitHub上，打开站点配置文件 _config.yml，翻到最后，修改为<br>YourgithubName就是你的GitHub账户</p><h3 id="1-修改配置文件"><a href="#1-修改配置文件" class="headerlink" title="1.修改配置文件"></a>1.修改配置文件</h3><p>修改内容：</p><figure class="highlight dts"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><code class="hljs dts"><span class="hljs-symbol">deploy:</span><br><span class="hljs-symbol">  type:</span> git<br><span class="hljs-symbol">  repo:</span> git@github.com:你的github名/仓库名.github.io.git<br><span class="hljs-symbol">  branch:</span> main（master）<br></code></pre></td></tr></table></figure><h3 id="2-找到自己的博客路径打开cmd"><a href="#2-找到自己的博客路径打开cmd" class="headerlink" title="2.找到自己的博客路径打开cmd"></a>2.找到自己的博客路径打开cmd</h3><p>这个时候需要先安装deploy-git ，也就是部署的命令,这样你才能用命令部署到GitHub。</p><figure class="highlight ada"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs ada">npm install hexo-deployer-git <span class="hljs-comment">--save</span><br></code></pre></td></tr></table></figure><h3 id="3-然后依次执行以下命令："><a href="#3-然后依次执行以下命令：" class="headerlink" title="3.然后依次执行以下命令："></a>3.然后依次执行以下命令：</h3><figure class="highlight verilog"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><code class="hljs verilog">hexo c   #清除缓存文件 db<span class="hljs-variable">.json</span> 和已生成的静态文件 public<br>hexo g       #生成网站静态文件到默认设置的 public 文件夹(hexo <span class="hljs-keyword">generate</span> 的缩写)<br>hexo d       #自动生成网站静态文件，并部署到设定的仓库(hexo deploy 的缩写)注意deploy时会让输个yes<br></code></pre></td></tr></table></figure><p>最后回到github上查看自己的仓库：</p><p>这就表示上传成功。</p><p>现在就可以使用xxx.github.io来访问你的博客啦</p>]]></content>
+    
+    
+    <categories>
+      
+      <category>工具</category>
+      
+      <category>搭建博客</category>
+      
+    </categories>
+    
+    
+    <tags>
+      
+      <tag>node</tag>
+      
+    </tags>
+    
+  </entry>
+  
+  
+  
+  <entry>
     <title>胡桃真好看</title>
     <link href="/2023/03/18/%E8%83%A1%E6%A1%83/"/>
     <url>/2023/03/18/%E8%83%A1%E6%A1%83/</url>
