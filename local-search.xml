@@ -4,6 +4,33 @@
   
   
   <entry>
+    <title>CLion&amp;Navicat</title>
+    <link href="/2023/03/20/CLion&amp;Navicat/"/>
+    <url>/2023/03/20/CLion&amp;Navicat/</url>
+    
+    <content type="html"><![CDATA[<p><a href="https://willwoodson.github.io/">作者</a></p><h1 id="Navicat"><a href="#Navicat" class="headerlink" title="Navicat"></a>Navicat</h1><img src="https://gallery-1302735062.cos.ap-beijing.myqcloud.com/typora/202303152310178.png" alt="image-20230309175032787" style="zoom:50%;" /><h2 id="安装"><a href="#安装" class="headerlink" title="安装"></a>安装</h2><p><a href="https://baijiahao.baidu.com/s?id=1740971973625189531&wfr=spider&for=pc">Navicat16破解 Navicat最新版破解教程「永久激活，亲测有效」</a></p><h2 id="使用"><a href="#使用" class="headerlink" title="使用"></a>使用</h2><p><a href="https://www.navicat.com.cn/company/aboutus/blog/478-%E4%BD%BF%E7%94%A8-navicat-16-%E5%88%9B%E5%BB%BA%E6%B5%8B%E8%AF%95%E6%95%B0%E6%8D%AE%E5%BA%93.html">使用 Navicat 16 创建测试数据库</a></p><p><a href="https://www.bilibili.com/video/BV1Ni4y1c7sG/?spm_id_from=333.337.search-card.all.click&vd_source=3f77123f4c4359b83bca0e12557bdf5c">使用navicat连接mysql数据库创建数据库、表、转储sql文件，导入sql数据</a></p><p><a href="https://www.bilibili.com/video/BV1vV411Y7V3/?spm_id_from=333.337.search-card.all.click&vd_source=3f77123f4c4359b83bca0e12557bdf5c">【Am】神兵利器-Navicat在工作中的所有使用技巧总结</a></p><h1 id="CLion"><a href="#CLion" class="headerlink" title="CLion"></a>CLion</h1><img src="https://gallery-1302735062.cos.ap-beijing.myqcloud.com/typora/202303152310179.png" alt="image-20230309175141233" style="zoom:50%;" /><p>CLion是JetBrains公司旗下发布的一款跨平台C/C++/Rust IDE开发工具。</p><h2 id="安装-1"><a href="#安装-1" class="headerlink" title="安装"></a>安装</h2><p><a href="https://www.bilibili.com/read/cv21621826/">2023年Clion最新版安装破解激活教程，永久免费使用</a></p><h2 id="使用-1"><a href="#使用-1" class="headerlink" title="使用"></a>使用</h2><p><a href="https://www.jianshu.com/p/371066499570">clion远程开发|linux开发环境|跨平台开发|ssh连接远程主机</a></p><p>在 windows上用 clion开发 c++，之前 clion用 mingw的环境，但后面遇到 mingw头文件有些不全，或者 linux里的个别函数没有，会导致 IDE报错，虽然最终不会影响在 linux上编译，但是写代码会很别扭，开发效率降低。</p><p>想到 Source Insight软件可以用 ssh远程加载虚拟机 linux上的项目文件，然后可以更好的查看代码。<br> 在 virtual studio 201*上可以进行 c-linux跨平台开发，连接 linux后，可以直接在 linux上创建项目，在 windows上拥有 linux的开发环境。</p><p>试想 clion应该也可以。确实可以，设置起来也还算简单。</p><p>=================<br> 0，先在 windows本地打开一个原有的项目，或者创建一个空项目，反正要先打开一个项目。<br> 虚拟机 linux上面不用下载额外的工具，只需要 clion一个软件 和 项目程序能够运行的 linux环境 就可以。</p><p>1，先看我用的软件版本</p><p>2，之前配置 mingw的情况</p><img src="https://gallery-1302735062.cos.ap-beijing.myqcloud.com/typora/202303152310180.png" alt="image-20230309164507118" style="zoom: 50%;" /><p>001_mingw.png</p><p>3，打开 file -&gt; settings -&gt; toolchains 在工具链添加远程主机</p><p><img src="https://gallery-1302735062.cos.ap-beijing.myqcloud.com/typora/202303152310181.png" alt="image-20230309164518187"></p><p>4，点击 deploment 设置部署</p><img src="https://gallery-1302735062.cos.ap-beijing.myqcloud.com/typora/202303152310182.png" alt="image-20230309164534007" style="zoom:50%;" /><p>003_deployment.png</p><p>或者是在 tools -&gt; deploment 打开部署设置</p><p><img src="https://gallery-1302735062.cos.ap-beijing.myqcloud.com/typora/202303152310183.png" alt="image-20230309164541736"></p><p>004_deployment2.png</p><p>5，这里我使用软件自带的 ssh会话工具，你可以用其他的</p><img src="https://gallery-1302735062.cos.ap-beijing.myqcloud.com/typora/202303152310184.png" alt="image-20230309164547948" style="zoom:50%;" /><p>005_ssh_session.png</p><p>6，关于本地项目文件修改后 同步到远程项目的事情，软件会自己同步，有时候可能需要你自己手动同步修改的文件。</p><img src="https://gallery-1302735062.cos.ap-beijing.myqcloud.com/typora/202303152310185.png" alt="image-20230309164555198" style="zoom:50%;" /><p>006_sync.png</p><p>7，也可以设置自动同步，即使不设置，clion自己也会将更新的修改同步到远程。</p><img src="https://gallery-1302735062.cos.ap-beijing.myqcloud.com/typora/202303152310186.png" alt="image-20230309164604779" style="zoom:50%;" /><p>007_auto_sync.png</p><p>8，然后开始写代码，可以看到头文件不是 mingw的，而是虚拟机 linux上的。</p><img src="https://gallery-1302735062.cos.ap-beijing.myqcloud.com/typora/202303152310187.png" alt="image-20230309164611878" style="zoom:50%;" /><p>008_head_file.png</p><p>9，代码提示1</p><img src="https://gallery-1302735062.cos.ap-beijing.myqcloud.com/typora/202303152310188.png" alt="image-20230309164618457" style="zoom:50%;" /><p>009_tip1.png</p><p>10，代码提示2</p><img src="https://gallery-1302735062.cos.ap-beijing.myqcloud.com/typora/202303152310189.png" alt="image-20230309164627616" style="zoom:50%;" /><p>010_tip2.png</p><p>11，函数参数提示</p><img src="https://gallery-1302735062.cos.ap-beijing.myqcloud.com/typora/202303152310190.png" alt="image-20230309164704778" style="zoom:50%;" /><p>011_tip3.png</p><p>12，运行前要到 settings -&gt; cmake 设置dubug的工具链为 remote host。</p><img src="https://gallery-1302735062.cos.ap-beijing.myqcloud.com/typora/202303152310191.png" alt="image-20230309164718041" style="zoom:50%;" /><p>012_debug.png</p><p>13，然后可能要重新加载一下当前项目。</p><img src="https://gallery-1302735062.cos.ap-beijing.myqcloud.com/typora/202303152310192.png" alt="image-20230309164727810" style="zoom:50%;" /><p>013_reload.png</p><p>14，点击右上角的绿色三角形，执行程序。</p><img src="https://gallery-1302735062.cos.ap-beijing.myqcloud.com/typora/202303152310193.png" alt="image-20230309164734795" style="zoom:50%;" /><p>014_cout.png</p><p>=======================================================================================<br> 15，以上就是整个流程，clion可能会在 linux的 /tmp目录生成文件，那些文件会自动删除。</p><p>16，这是 jetbrains关于远程开发的帮助文档，或许有用。</p><img src="https://gallery-1302735062.cos.ap-beijing.myqcloud.com/typora/202303152310194.png" alt="image-20230309164742583" style="zoom:50%;" /><p>015_help.png</p><p>至此，结束。</p><p>17，后来发现，本地文件的创建和修改 会自动上传到 linux，但本地删除文件后，linux端不会跟着删除文件，我的解决办法，<br> 右键项目，选择部署同步，然后比对差异文件，选中需要删除的删掉。</p><img src="https://gallery-1302735062.cos.ap-beijing.myqcloud.com/typora/202303152310195.png" alt="image-20230309164749881" style="zoom:50%;" /><p>diff0.png</p><img src="https://gallery-1302735062.cos.ap-beijing.myqcloud.com/typora/202303152310196.png" alt="image-20230309164756851" style="zoom:50%;" /><p>diff1.png</p><h1 id="CMake"><a href="#CMake" class="headerlink" title="CMake"></a>CMake</h1><p><a href="https://blog.csdn.net/qq_43257914/article/details/128409831">cmake超详细入门教程，学不会你捶我~</a></p><p><a href="https://zhuanlan.zhihu.com/p/500002865">CMake 良心教程，教你从入门到入魂</a></p>]]></content>
+    
+    
+    <categories>
+      
+      <category>工具</category>
+      
+      <category>CLion&amp;Navicat</category>
+      
+    </categories>
+    
+    
+    <tags>
+      
+      <tag>node</tag>
+      
+    </tags>
+    
+  </entry>
+  
+  
+  
+  <entry>
     <title>debian安装</title>
     <link href="/2023/03/20/debian%E5%AE%89%E8%A3%85/"/>
     <url>/2023/03/20/debian%E5%AE%89%E8%A3%85/</url>
