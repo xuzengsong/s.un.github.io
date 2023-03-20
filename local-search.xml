@@ -4,6 +4,33 @@
   
   
   <entry>
+    <title>debian安装</title>
+    <link href="/2023/03/20/debian%E5%AE%89%E8%A3%85/"/>
+    <url>/2023/03/20/debian%E5%AE%89%E8%A3%85/</url>
+    
+    <content type="html"><![CDATA[<p>一 准备工作<br>1.虚拟机软件 VMware 16</p><p><a href="https://www.vmware.com/go/getworkstation-win">https://www.vmware.com/go/getworkstation-win</a></p><p>2.Debian ISO镜像</p><p><a href="https://www.debian.org/download">https://www.debian.org/download</a></p><p>二 创建安装Debain的虚拟机<br>1、打开虚拟软件 vmware workstation16 点击创建虚新的拟机</p><p><img src="https://fastly.jsdelivr.net/gh/xuzengsong/picbed@main//img/25036d2205b740f5b4ff0c3ab128fc6d.png" alt="img"></p>]]></content>
+    
+    
+    <categories>
+      
+      <category>（父分类）</category>
+      
+      <category>（子分类）</category>
+      
+    </categories>
+    
+    
+    <tags>
+      
+      <tag>node</tag>
+      
+    </tags>
+    
+  </entry>
+  
+  
+  
+  <entry>
     <title>搭建博客</title>
     <link href="/2023/03/18/%E6%90%AD%E5%BB%BA%E5%8D%9A%E5%AE%A2/"/>
     <url>/2023/03/18/%E6%90%AD%E5%BB%BA%E5%8D%9A%E5%AE%A2/</url>
