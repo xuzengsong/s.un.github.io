@@ -4,6 +4,33 @@
   
   
   <entry>
+    <title>DL学习路径建议</title>
+    <link href="/2023/03/29/%E6%B7%B1%E5%BA%A6%E5%AD%A6%E4%B9%A0%E5%AD%A6%E4%B9%A0%E8%B7%AF%E5%BE%84/"/>
+    <url>/2023/03/29/%E6%B7%B1%E5%BA%A6%E5%AD%A6%E4%B9%A0%E5%AD%A6%E4%B9%A0%E8%B7%AF%E5%BE%84/</url>
+    
+    <content type="html"><![CDATA[<h1 id="DL学习路径建议"><a href="#DL学习路径建议" class="headerlink" title="DL学习路径建议"></a>DL学习路径建议</h1><p><img src="https://fastly.jsdelivr.net/gh/xuzengsong/picbed@main//img/uTools_1678265406750.png" alt="uTools_1678265406750"></p><h2 id="工具"><a href="#工具" class="headerlink" title="工具"></a>工具</h2><h3 id="1、Python学习"><a href="#1、Python学习" class="headerlink" title="1、Python学习"></a>1、Python学习</h3><p>主要帮助大家掌握    <strong>表示，清洗，统计，展示数据</strong>  的能力，打好基础。（粗略看）</p><p><a href="https://www.bilibili.com/video/BV1L64y1X7om/?vd_source=c5c4bdd8a8e3ff586145c67e72ab2bf6">北理-Python数据分析与展示-Numpy、Matplotlib、Pandas</a></p><p>**IDE: **Pychram(建议)，Vscode</p><h3 id="2、PyTorch学习"><a href="#2、PyTorch学习" class="headerlink" title="2、PyTorch学习"></a>2、PyTorch学习</h3><p>Pytorch是一个开源深度学习框架，类似的框架还有TensorFlow, PaddlePaddle等。PyTorch是深度学习的一个很好的切入点，Pytorch的风格与Python风格一致性较高。如果有一定的Python基础，那么会发现PyTorch是一种直观、高效和启发性的体验。PyTorch的核心优势在于快速原型实验和测试想法的能力，另外具备将实验转化为生产性、可部署资源的可能性的能力。</p><p><a href="https://www.bilibili.com/video/BV1Kp4y147Rw/?spm_id_from=333.999.0.0&vd_source=c5c4bdd8a8e3ff586145c67e72ab2bf6">Pytorch框架搭建（痛苦面具）</a></p><p>课程（边学边练，不用太细致）：</p><p><a href="https://www.bilibili.com/medialist/detail/ml1689407997?type=1&spm_id_from=333.999.0.0">李沐的动手深度学习</a></p><p><a href="https://pytorch.org/tutorials/">官网教程</a></p><h3 id="3、文献检索"><a href="#3、文献检索" class="headerlink" title="3、文献检索"></a>3、文献检索</h3><p><a href="https://www.cnki.net/">中国知网</a>、<a href="https://www.wanfangdata.com.cn/index.html?index=true">万方</a>、<a href="https://paperswithcode.com/">paperswithcode</a>（文献较少，但有代码）、<a href="https://sci-hub.se/">sci-hub</a>、<a href="https://scholar.google.com.hk/">谷歌学术</a></p><h3 id="4、文献管理"><a href="#4、文献管理" class="headerlink" title="4、文献管理"></a>4、文献管理</h3><p>文件管理软件</p><p><a href="https://www.bilibili.com/video/BV1xg411f736/?spm_id_from=333.337.search-card.all.click&vd_source=c5c4bdd8a8e3ff586145c67e72ab2bf6">Zotero</a></p><h3 id="5、写论文"><a href="#5、写论文" class="headerlink" title="5、写论文"></a>5、写论文</h3><p><strong>论文润色，语法修改，综述撰写……:</strong></p><p>Chatgpt，New Bing（与时俱进，合理利用)</p><p><strong>公式识别：</strong></p><p>Mathpix Snipping Tool</p><p><strong>Latex在线编辑器，需要学习latex语法：</strong></p><p><a href="https://www.overleaf.com/">Overleaf</a></p><table><thead><tr><th>信息</th><th></th></tr></thead><tbody><tr><td>整理人</td><td>徐赠淞</td></tr><tr><td>时间</td><td>2023-03-08</td></tr></tbody></table>]]></content>
+    
+    
+    <categories>
+      
+      <category>科研</category>
+      
+      <category>工具</category>
+      
+    </categories>
+    
+    
+    <tags>
+      
+      <tag>node</tag>
+      
+    </tags>
+    
+  </entry>
+  
+  
+  
+  <entry>
     <title>SpringCloud下JNA调用Cpp</title>
     <link href="/2023/03/29/SpringCloud%E4%B8%8BJNA%E8%B0%83%E7%94%A8Cpp/"/>
     <url>/2023/03/29/SpringCloud%E4%B8%8BJNA%E8%B0%83%E7%94%A8Cpp/</url>
