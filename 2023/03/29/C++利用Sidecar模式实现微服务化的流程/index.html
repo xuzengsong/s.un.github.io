@@ -1,0 +1,719 @@
+
+
+<!DOCTYPE html>
+<html lang="zh-CN" data-default-color-scheme=auto>
+
+
+
+<head>
+  <meta charset="UTF-8">
+  <link rel="apple-touch-icon" sizes="76x76" href="/img/avatar.jpg">
+  <link rel="icon" href="/img/avatar.jpg">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0, shrink-to-fit=no">
+  <meta http-equiv="x-ua-compatible" content="ie=edge">
+  
+  <meta name="theme-color" content="#2f4154">
+  <meta name="author" content="Xuxx">
+  <meta name="keywords" content="">
+  
+    <meta name="description" content="C++利用Sidecar模式实现微服务化的流程前言  公司近期要将园区所有的服务做成微服务模式，因之前负责的网关服务是C++来实现的，因此研究了一下非jvm语言实现向Eureka注册中心注册的过程，特此记录，以便后续的温习，初次了解微服务，如有错误，欢迎指正。  关于sidecar模式的原理和为何采用sidecar模式在网上能够找到相关的博客去了解，这里转载几篇好的文章，大家可以学习了解一下。 h">
+<meta property="og:type" content="article">
+<meta property="og:title" content="C++利用Sidecar模式实现微服务化的流程">
+<meta property="og:url" content="http://example.com/2023/03/29/C++%E5%88%A9%E7%94%A8Sidecar%E6%A8%A1%E5%BC%8F%E5%AE%9E%E7%8E%B0%E5%BE%AE%E6%9C%8D%E5%8A%A1%E5%8C%96%E7%9A%84%E6%B5%81%E7%A8%8B/index.html">
+<meta property="og:site_name" content="S.un">
+<meta property="og:description" content="C++利用Sidecar模式实现微服务化的流程前言  公司近期要将园区所有的服务做成微服务模式，因之前负责的网关服务是C++来实现的，因此研究了一下非jvm语言实现向Eureka注册中心注册的过程，特此记录，以便后续的温习，初次了解微服务，如有错误，欢迎指正。  关于sidecar模式的原理和为何采用sidecar模式在网上能够找到相关的博客去了解，这里转载几篇好的文章，大家可以学习了解一下。 h">
+<meta property="og:locale" content="zh_CN">
+<meta property="og:image" content="https://fastly.jsdelivr.net/gh/xuzengsong/picbed@main//img/20191109112024899.png">
+<meta property="article:published_time" content="2023-03-29T02:07:33.000Z">
+<meta property="article:modified_time" content="2023-03-29T02:22:31.472Z">
+<meta property="article:author" content="Xuxx">
+<meta property="article:tag" content="node">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:image" content="https://fastly.jsdelivr.net/gh/xuzengsong/picbed@main//img/20191109112024899.png">
+  
+  
+  
+  <title>C++利用Sidecar模式实现微服务化的流程 - S.un</title>
+
+  <link  rel="stylesheet" href="https://lib.baomitu.com/twitter-bootstrap/4.6.1/css/bootstrap.min.css" />
+
+
+
+  <link  rel="stylesheet" href="https://lib.baomitu.com/github-markdown-css/4.0.0/github-markdown.min.css" />
+
+  <link  rel="stylesheet" href="https://lib.baomitu.com/hint.css/2.7.0/hint.min.css" />
+
+  <link  rel="stylesheet" href="https://lib.baomitu.com/fancybox/3.5.7/jquery.fancybox.min.css" />
+
+
+
+<!-- 主题依赖的图标库，不要自行修改 -->
+<!-- Do not modify the link that theme dependent icons -->
+
+<link rel="stylesheet" href="//at.alicdn.com/t/font_1749284_hj8rtnfg7um.css">
+
+
+
+<link rel="stylesheet" href="//at.alicdn.com/t/font_1736178_lbnruvf0jn.css">
+
+
+<link  rel="stylesheet" href="/css/main.css" />
+
+
+  <link id="highlight-css" rel="stylesheet" href="/css/highlight.css" />
+  
+    <link id="highlight-css-dark" rel="stylesheet" href="/css/highlight-dark.css" />
+  
+
+
+
+
+  <script id="fluid-configs">
+    var Fluid = window.Fluid || {};
+    Fluid.ctx = Object.assign({}, Fluid.ctx)
+    var CONFIG = {"hostname":"example.com","root":"/","version":"1.9.4","typing":{"enable":true,"typeSpeed":70,"cursorChar":"_","loop":false,"scope":[]},"anchorjs":{"enable":true,"element":"h1,h2,h3,h4,h5,h6","placement":"left","visible":"hover","icon":""},"progressbar":{"enable":true,"height_px":3,"color":"#29d","options":{"showSpinner":false,"trickleSpeed":100}},"code_language":{"enable":true,"default":"TEXT"},"copy_btn":true,"image_caption":{"enable":true},"image_zoom":{"enable":true,"img_url_replace":["",""]},"toc":{"enable":true,"placement":"right","headingSelector":"h1,h2,h3,h4,h5,h6","collapseDepth":0},"lazyload":{"enable":true,"loading_img":"/img/loading.gif","onlypost":false,"offset_factor":2},"web_analytics":{"enable":true,"follow_dnt":true,"baidu":null,"google":null,"gtag":null,"tencent":{"sid":null,"cid":null},"woyaola":null,"cnzz":null,"leancloud":{"app_id":null,"app_key":null,"server_url":null,"path":"window.location.pathname","ignore_local":false}},"search_path":"/local-search.xml"};
+
+    if (CONFIG.web_analytics.follow_dnt) {
+      var dntVal = navigator.doNotTrack || window.doNotTrack || navigator.msDoNotTrack;
+      Fluid.ctx.dnt = dntVal && (dntVal.startsWith('1') || dntVal.startsWith('yes') || dntVal.startsWith('on'));
+    }
+  </script>
+  <script  src="/js/utils.js" ></script>
+  <script  src="/js/color-schema.js" ></script>
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+
+
+  
+<meta name="generator" content="Hexo 5.4.2"></head>
+
+
+<body>
+  
+
+  <header>
+    
+
+<div class="header-inner" style="height: 70vh;">
+  <nav id="navbar" class="navbar fixed-top  navbar-expand-lg navbar-dark scrolling-navbar">
+  <div class="container">
+    <a class="navbar-brand" href="/">
+      <strong>S.un</strong>
+    </a>
+
+    <button id="navbar-toggler-btn" class="navbar-toggler" type="button" data-toggle="collapse"
+            data-target="#navbarSupportedContent"
+            aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+      <div class="animated-icon"><span></span><span></span><span></span></div>
+    </button>
+
+    <!-- Collapsible content -->
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+      <ul class="navbar-nav ml-auto text-center">
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/">
+                <i class="iconfont icon-home-fill"></i>
+                <span>首页</span>
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/archives/">
+                <i class="iconfont icon-archive-fill"></i>
+                <span>归档</span>
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/categories/">
+                <i class="iconfont icon-category-fill"></i>
+                <span>分类</span>
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/tags/">
+                <i class="iconfont icon-tags-fill"></i>
+                <span>标签</span>
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/about/">
+                <i class="iconfont icon-user-fill"></i>
+                <span>关于</span>
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/links/">
+                <i class="iconfont icon-link-fill"></i>
+                <span>友链</span>
+              </a>
+            </li>
+          
+        
+        
+          <li class="nav-item" id="search-btn">
+            <a class="nav-link" target="_self" href="javascript:;" data-toggle="modal" data-target="#modalSearch" aria-label="Search">
+              <i class="iconfont icon-search"></i>
+            </a>
+          </li>
+          
+        
+        
+          <li class="nav-item" id="color-toggle-btn">
+            <a class="nav-link" target="_self" href="javascript:;" aria-label="Color Toggle">
+              <i class="iconfont icon-dark" id="color-toggle-icon"></i>
+            </a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+</nav>
+
+  
+
+<div id="banner" class="banner" parallax=true
+     style="background: url('/img/hutao.jpg') no-repeat center center; background-size: cover;">
+  <div class="full-bg-img">
+    <div class="mask flex-center" style="background-color: rgba(0, 0, 0, 0.3)">
+      <div class="banner-text text-center fade-in-up">
+        <div class="h2">
+          
+            <span id="subtitle" data-typed-text="C++利用Sidecar模式实现微服务化的流程"></span>
+          
+        </div>
+
+        
+          
+  <div class="mt-3">
+    
+      <span class="post-meta mr-2">
+        <i class="iconfont icon-author" aria-hidden="true"></i>
+        Xuxx
+      </span>
+    
+    
+      <span class="post-meta">
+        <i class="iconfont icon-date-fill" aria-hidden="true"></i>
+        <time datetime="2023-03-29 10:07" pubdate>
+          2023年3月29日 上午
+        </time>
+      </span>
+    
+  </div>
+
+  <div class="mt-1">
+    
+      <span class="post-meta mr-2">
+        <i class="iconfont icon-chart"></i>
+        
+          3.5k 字
+        
+      </span>
+    
+
+    
+      <span class="post-meta mr-2">
+        <i class="iconfont icon-clock-fill"></i>
+        
+        
+        
+          30 分钟
+        
+      </span>
+    
+
+    
+    
+  </div>
+
+
+        
+      </div>
+
+      
+    </div>
+  </div>
+</div>
+
+</div>
+
+  </header>
+
+  <main>
+    
+      
+
+<div class="container-fluid nopadding-x">
+  <div class="row nomargin-x">
+    <div class="side-col d-none d-lg-block col-lg-2">
+      
+
+    </div>
+
+    <div class="col-lg-8 nopadding-x-md">
+      <div class="container nopadding-x-md" id="board-ctn">
+        <div id="board">
+          <article class="post-content mx-auto">
+            <!-- SEO header -->
+            <h1 style="display: none">C++利用Sidecar模式实现微服务化的流程</h1>
+            
+            
+              <div class="markdown-body">
+                
+                <h1 id="C-利用Sidecar模式实现微服务化的流程"><a href="#C-利用Sidecar模式实现微服务化的流程" class="headerlink" title="C++利用Sidecar模式实现微服务化的流程"></a>C++利用Sidecar模式实现微服务化的流程</h1><h2 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h2><p>  公司近期要将园区所有的服务做成微服务模式，因之前负责的网关服务是C++来实现的，因此研究了一下非jvm语言实现向Eureka注册中心注册的过程，特此记录，以便后续的温习，初次了解微服务，如有错误，欢迎指正。<br>  关于sidecar模式的原理和为何采用sidecar模式在网上能够找到相关的博客去了解，这里转载几篇好的文章，大家可以学习了解一下。</p>
+<p><a target="_blank" rel="noopener" href="https://blog.csdn.net/StarskyBoy/article/details/85012642">https://blog.csdn.net/StarskyBoy/article/details/85012642</a><br><a target="_blank" rel="noopener" href="https://blog.csdn.net/yang00322/article/details/77964703">https://blog.csdn.net/yang00322/article/details/77964703</a><br><a target="_blank" rel="noopener" href="https://www.jianshu.com/p/a96056870143">https://www.jianshu.com/p/a96056870143</a></p>
+<h2 id="流程"><a href="#流程" class="headerlink" title="流程"></a>流程</h2><p> 下面主要来记录一下服务和Eureka注册中心交互的过程，以下的过程是根据java的同事在通过配置Eureka客户端，来向Eureka服务器发起请求时，用wireshark抓包工具查看完整的交互流程。再通过Eureka提供的REST接口，利用C++里面的Poco库的http相关接口，来实现微服务化向Eureka注册，并实现服务的监控。<br>1、服务注册<br>REST接口：POST /eureka/v2/apps/appID<br>代码段如下：</p>
+<pre><code class="hljs">    Poco::URI uri(&quot;http://ip:port/eureka/apps/appID&quot;);
+    Poco::Net::HTTPClientSession session(uri.getHost(), uri.getPort());
+    session.setKeepAlive(true);
+
+    //创建 HTTP request
+    Poco::Net::HTTPRequest request(Poco::Net::HTTPRequest::HTTP_PUT, uri.getPathAndQuery(),               Poco::Net::HTTPMessage::HTTP_1_1);
+    request.setContentType(&quot;application/json; charset=utf-8&quot;);
+    request.setContentLength((int)msg.length());
+    
+    std::ostream &amp;reqOstr = session.sendRequest(request);
+    reqOstr &lt;&lt; msg;
+</code></pre>
+<p>其中，appID是要向Eureka注册的服务名，msg是一个标准的json字符串，json字符串的基本内容如下图：</p>
+<p><img src="https://fastly.jsdelivr.net/gh/xuzengsong/picbed@main//img/20191109112024899.png" srcset="/img/loading.gif" lazyload alt="在这里插入图片描述"></p>
+<p>*以下是我整理的注册发给Eureka的json字符串的相关字段释义：</p>
+<p>InstanceInfo服务实例信息字段：<br>1）instanceId : 实例id<br>2）hostName: 主机名称<br>3）app：应用名<br>4）ipAddr：ip地址<br>5）status：实例状态，如UP，DOWN,STARTING,OUT_OF_SERVICE,UNKOWN<br>6）overriddenStatus：外界需要强制覆盖的状态值，默认为UNKOWN<br>7）port：端口号<br>8）securePort：https的端口号<br>9）countryId：被废弃的属性，属性为1，代表US<br>10）dataCenterInfo：dataCenter的信息，Netflix或者Amazon或者MyOwn<br>11）leaseInfo：租约信息<br>12）metadata：应用实例的元数据信息<br>13）homePageUrl：应用实例的首页url<br>14）statusPageUrl：应用实例的状态页<br>15）healthCheckUrl；应用实例的健康检查url<br>16）vipAddress：虚拟ip地址<br>17）secureVipAddress：https的虚拟ip地址<br>18）isCoordinatingDiscoveryServer：首先标识是否是DiscoveryServer,其次标识该DiscoveryServer是否是响应你请求的实例<br>19）lastUpdatedTimestamp：状态信息最后更新时间<br>20）lastDirtyTimestamp：实例信息最新的过期时间，在client端用于标识<br>21）sid：被废弃的属性，默认为na<br>22）actionType：标识EurekaServer对该实例执行的操作，包括ADDED,MODIFIED,DELETE这三类<br>23）asgName：在AWS的autoscaling group的名称<br>LeaseInfo租约信息字段：<br>以下参数主要用于标识应用实例的心跳情况，比如约定的心跳周期，租约有效期，最后一次续约时间等。<br>1）renewalIntervalInSecs：client端续约的间隔时间<br>2）durationInSecs：client端需要设定的租约的有效时长<br>3）registrationTimestamp: Server端设置的该租约第一次注册时间<br>4）lastRenewalTimestamp: Server端设置的该租约最后一次续约时间<br>5）evictionTimestamp；Server端设置的该租约被剔除的时间<br>6）serviceUpTimestamp：Server端设置的该服务实例标记为Up的时间*</p>
+<h2 id="2、获取服务实例"><a href="#2、获取服务实例" class="headerlink" title="2、获取服务实例"></a>2、获取服务实例</h2><p>获取服务实例的接口有两个，一个是获取全量服务实例列表，即每次获取Eureka服务器上的所有实例，另外一个是实现增量实例列表，增量拉取变化的服务信息，然后本地去做更新。<br>REST接口：<br>全量：GET /eureka/apps<br>增量：GET /eureka/apps/delta<br>这里为了方便只是做了全量的实现，代码段如下：</p>
+<pre><code class="hljs">    Poco::URI uri(&quot;http://ip:port/eureka/apps&quot;);
+    Poco::Net::HTTPClientSession session(uri.getHost(), uri.getPort());
+    Poco::Net::HTTPRequest request(Poco::Net::HTTPRequest::HTTP_GET, uri.getPathAndQuery());
+    session.sendRequest(request);
+</code></pre>
+<p>这里通过抓包来分析，只有第一次调用的是全量的接口，后面每次发送心跳后都会调用一次获取增量的接口，来做本地服务实例的更新。</p>
+<h2 id="3、心跳检测-心跳续约"><a href="#3、心跳检测-心跳续约" class="headerlink" title="3、心跳检测/心跳续约"></a>3、心跳检测/心跳续约</h2><p>注册完之后，会根据配置的心跳时间来规律的向Eureka发送心跳，告诉它还“活着”，如果超过续约时间还没有发接收到心跳，Eureka服务端会将服务自动剔除。这个时间间隔是可配的，上面字段释义里面已经提到。<br>REST接口：PUT /eureka/apps/appID/instanceID<br>（instanceId是和服务实例相关联的唯一id，默认组成为hostname+appId+端口号）<br>代码同注册的代码段，只需要将http的请求方式post改成put即可。</p>
+<h2 id="4、服务下线"><a href="#4、服务下线" class="headerlink" title="4、服务下线"></a>4、服务下线</h2><p>服务下线，当服务主动停止后，会触发一个服务下线的REST请求，告诉Eureka下线，此时Eureka会将服务设置为DWON，并将消息广播发送出去，并更新缓存清单。<br>REST接口：DELETE/eureka/apps/appId/instanceId</p>
+<h2 id="5、健康检查"><a href="#5、健康检查" class="headerlink" title="5、健康检查"></a>5、健康检查</h2><p>服务微服务化之后，会对里面的业务进行自我监控，如果某个业务断开连接或者不正常工作，就需要发送给Eureka注册中心，将服务的状态从UP改为DOWN，Eureka注册中心就不会再向客户端发起请求，这样的一个流程就叫做健康检测。健康状态接口还可以通过<a href="http://ip:port/health来查看，内容如下：">http://ip:port/health来查看，内容如下：</a><br>Example：</p>
+<figure class="highlight json"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><code class="hljs json"><span class="hljs-punctuation">&#123;</span><br><span class="hljs-attr">&quot;description&quot;</span><span class="hljs-punctuation">:</span><span class="hljs-string">&quot; Eureka  Client&quot;</span><span class="hljs-punctuation">,</span><br><span class="hljs-attr">&quot;status&quot;</span><span class="hljs-punctuation">:</span><span class="hljs-string">&quot;UP&quot;</span><br><span class="hljs-punctuation">&#125;</span><br><br></code></pre></td></tr></table></figure>
+
+<p>总结<br>整个流程下来其实不难，我理解的是这样，sidecar模式其实也是在本身存在的服务基础上实现一个健康检查接口，向Eureka服务端注册，并向Eureka服务端反馈自身的一个健康情况。<br>第一次写博客，如有错误或者不当的地方，欢迎指正！如果有侵权的地方，请及时告知，谢谢！<br>————————————————<br>版权声明：本文为CSDN博主「天真无邪的小白程序员」的原创文章，遵循CC 4.0 BY-SA版权协议，转载请附上原文出处链接及本声明。<br>原文链接：<a target="_blank" rel="noopener" href="https://blog.csdn.net/qq_45857272/article/details/102983834">https://blog.csdn.net/qq_45857272/article/details/102983834</a></p>
+
+                
+              </div>
+            
+            <hr/>
+            <div>
+              <div class="post-metas my-3">
+  
+    <div class="post-meta mr-3 d-flex align-items-center">
+      <i class="iconfont icon-category"></i>
+      
+
+<span class="category-chains">
+  
+  
+    
+      <span class="category-chain">
+        
+  <a href="/categories/%E5%B7%A5%E5%85%B7/" class="category-chain-item">工具</a>
+  
+  
+    <span>></span>
+    
+  <a href="/categories/%E5%B7%A5%E5%85%B7/C-JAVA%E5%BE%AE%E6%9C%8D%E5%8A%A1/" class="category-chain-item">C++&amp;JAVA微服务</a>
+  
+  
+
+  
+
+      </span>
+    
+  
+</span>
+
+    </div>
+  
+  
+    <div class="post-meta">
+      <i class="iconfont icon-tags"></i>
+      
+        <a href="/tags/node/">#node</a>
+      
+    </div>
+  
+</div>
+
+
+              
+  
+
+  <div class="license-box my-3">
+    <div class="license-title">
+      <div>C++利用Sidecar模式实现微服务化的流程</div>
+      <div>http://example.com/2023/03/29/C++利用Sidecar模式实现微服务化的流程/</div>
+    </div>
+    <div class="license-meta">
+      
+        <div class="license-meta-item">
+          <div>作者</div>
+          <div>Xuxx</div>
+        </div>
+      
+      
+        <div class="license-meta-item license-meta-date">
+          <div>发布于</div>
+          <div>2023年3月29日</div>
+        </div>
+      
+      
+      
+        <div class="license-meta-item">
+          <div>许可协议</div>
+          <div>
+            
+              
+              
+                <a target="_blank" href="https://creativecommons.org/licenses/by/4.0/">
+                  <span class="hint--top hint--rounded" aria-label="BY - 署名">
+                    <i class="iconfont icon-by"></i>
+                  </span>
+                </a>
+              
+            
+          </div>
+        </div>
+      
+    </div>
+    <div class="license-icon iconfont"></div>
+  </div>
+
+
+
+              
+                <div class="post-prevnext my-3">
+                  <article class="post-prev col-6">
+                    
+                    
+                      <a href="/2023/03/29/JNAvsJNI/" title="JNAvsJNI">
+                        <i class="iconfont icon-arrowleft"></i>
+                        <span class="hidden-mobile">JNAvsJNI</span>
+                        <span class="visible-mobile">上一篇</span>
+                      </a>
+                    
+                  </article>
+                  <article class="post-next col-6">
+                    
+                    
+                      <a href="/2023/03/28/nacos%E9%9B%86%E7%BE%A4%E6%90%AD%E5%BB%BA/" title="nacos集群搭建">
+                        <span class="hidden-mobile">nacos集群搭建</span>
+                        <span class="visible-mobile">下一篇</span>
+                        <i class="iconfont icon-arrowright"></i>
+                      </a>
+                    
+                  </article>
+                </div>
+              
+            </div>
+
+            
+          </article>
+        </div>
+      </div>
+    </div>
+
+    <div class="side-col d-none d-lg-block col-lg-2">
+      
+  <aside class="sidebar" style="margin-left: -1rem">
+    <div id="toc">
+  <p class="toc-header">
+    <i class="iconfont icon-list"></i>
+    <span>目录</span>
+  </p>
+  <div class="toc-body" id="toc-body"></div>
+</div>
+
+
+
+  </aside>
+
+
+    </div>
+  </div>
+</div>
+
+
+
+
+
+  
+
+
+
+  
+
+
+
+  
+
+
+
+  
+
+
+
+  
+
+
+
+
+
+
+
+    
+
+    
+      <a id="scroll-top-button" aria-label="TOP" href="#" role="button">
+        <i class="iconfont icon-arrowup" aria-hidden="true"></i>
+      </a>
+    
+
+    
+      <div class="modal fade" id="modalSearch" tabindex="-1" role="dialog" aria-labelledby="ModalLabel"
+     aria-hidden="true">
+  <div class="modal-dialog modal-dialog-scrollable modal-lg" role="document">
+    <div class="modal-content">
+      <div class="modal-header text-center">
+        <h4 class="modal-title w-100 font-weight-bold">搜索</h4>
+        <button type="button" id="local-search-close" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body mx-3">
+        <div class="md-form mb-5">
+          <input type="text" id="local-search-input" class="form-control validate">
+          <label data-error="x" data-success="v" for="local-search-input">关键词</label>
+        </div>
+        <div class="list-group" id="local-search-result"></div>
+      </div>
+    </div>
+  </div>
+</div>
+
+    
+
+    
+  </main>
+
+  <footer>
+    <div class="footer-inner">
+  
+    <div class="footer-content">
+       <a href="https://hexo.io" target="_blank" rel="nofollow noopener"><span>Hexo</span></a> <i class="iconfont icon-love"></i> <a href="https://github.com/fluid-dev/hexo-theme-fluid" target="_blank" rel="nofollow noopener"><span>Fluid</span></a> 
+    </div>
+  
+  
+  
+  
+</div>
+
+  </footer>
+
+  <!-- Scripts -->
+  
+  <script  src="https://lib.baomitu.com/nprogress/0.2.0/nprogress.min.js" ></script>
+  <link  rel="stylesheet" href="https://lib.baomitu.com/nprogress/0.2.0/nprogress.min.css" />
+
+  <script>
+    NProgress.configure({"showSpinner":false,"trickleSpeed":100})
+    NProgress.start()
+    window.addEventListener('load', function() {
+      NProgress.done();
+    })
+  </script>
+
+
+<script  src="https://lib.baomitu.com/jquery/3.6.0/jquery.min.js" ></script>
+<script  src="https://lib.baomitu.com/twitter-bootstrap/4.6.1/js/bootstrap.min.js" ></script>
+<script  src="/js/events.js" ></script>
+<script  src="/js/plugins.js" ></script>
+
+
+  <script  src="https://lib.baomitu.com/typed.js/2.0.12/typed.min.js" ></script>
+  <script>
+    (function (window, document) {
+      var typing = Fluid.plugins.typing;
+      var subtitle = document.getElementById('subtitle');
+      if (!subtitle || !typing) {
+        return;
+      }
+      var text = subtitle.getAttribute('data-typed-text');
+      
+        typing(text);
+      
+    })(window, document);
+  </script>
+
+
+
+
+  
+    <script  src="/js/img-lazyload.js" ></script>
+  
+
+
+
+
+  
+<script>
+  Fluid.utils.createScript('https://lib.baomitu.com/tocbot/4.18.2/tocbot.min.js', function() {
+    var toc = jQuery('#toc');
+    if (toc.length === 0 || !window.tocbot) { return; }
+    var boardCtn = jQuery('#board-ctn');
+    var boardTop = boardCtn.offset().top;
+
+    window.tocbot.init(Object.assign({
+      tocSelector     : '#toc-body',
+      contentSelector : '.markdown-body',
+      linkClass       : 'tocbot-link',
+      activeLinkClass : 'tocbot-active-link',
+      listClass       : 'tocbot-list',
+      isCollapsedClass: 'tocbot-is-collapsed',
+      collapsibleClass: 'tocbot-is-collapsible',
+      scrollSmooth    : true,
+      includeTitleTags: true,
+      headingsOffset  : -boardTop,
+    }, CONFIG.toc));
+    if (toc.find('.toc-list-item').length > 0) {
+      toc.css('visibility', 'visible');
+    }
+
+    Fluid.events.registerRefreshCallback(function() {
+      if ('tocbot' in window) {
+        tocbot.refresh();
+        var toc = jQuery('#toc');
+        if (toc.length === 0 || !tocbot) {
+          return;
+        }
+        if (toc.find('.toc-list-item').length > 0) {
+          toc.css('visibility', 'visible');
+        }
+      }
+    });
+  });
+</script>
+
+
+  <script src=https://lib.baomitu.com/clipboard.js/2.0.11/clipboard.min.js></script>
+
+  <script>Fluid.plugins.codeWidget();</script>
+
+
+  
+<script>
+  Fluid.utils.createScript('https://lib.baomitu.com/anchor-js/4.3.1/anchor.min.js', function() {
+    window.anchors.options = {
+      placement: CONFIG.anchorjs.placement,
+      visible  : CONFIG.anchorjs.visible
+    };
+    if (CONFIG.anchorjs.icon) {
+      window.anchors.options.icon = CONFIG.anchorjs.icon;
+    }
+    var el = (CONFIG.anchorjs.element || 'h1,h2,h3,h4,h5,h6').split(',');
+    var res = [];
+    for (var item of el) {
+      res.push('.markdown-body > ' + item.trim());
+    }
+    if (CONFIG.anchorjs.placement === 'left') {
+      window.anchors.options.class = 'anchorjs-link-left';
+    }
+    window.anchors.add(res.join(', '));
+
+    Fluid.events.registerRefreshCallback(function() {
+      if ('anchors' in window) {
+        anchors.removeAll();
+        var el = (CONFIG.anchorjs.element || 'h1,h2,h3,h4,h5,h6').split(',');
+        var res = [];
+        for (var item of el) {
+          res.push('.markdown-body > ' + item.trim());
+        }
+        if (CONFIG.anchorjs.placement === 'left') {
+          anchors.options.class = 'anchorjs-link-left';
+        }
+        anchors.add(res.join(', '));
+      }
+    });
+  });
+</script>
+
+
+  
+<script>
+  Fluid.utils.createScript('https://lib.baomitu.com/fancybox/3.5.7/jquery.fancybox.min.js', function() {
+    Fluid.plugins.fancyBox();
+  });
+</script>
+
+
+  <script>Fluid.plugins.imageCaption();</script>
+
+  <script  src="/js/local-search.js" ></script>
+
+
+
+
+
+<!-- 主题的启动项，将它保持在最底部 -->
+<!-- the boot of the theme, keep it at the bottom -->
+<script  src="/js/boot.js" ></script>
+
+
+  
+
+  <noscript>
+    <div class="noscript-warning">博客在允许 JavaScript 运行的环境下浏览效果更佳</div>
+  </noscript>
+</body>
+</html>

@@ -4,6 +4,87 @@
   
   
   <entry>
+    <title>SpringCloud下JNA调用Cpp</title>
+    <link href="/2023/03/29/SpringCloud%E4%B8%8BJNA%E8%B0%83%E7%94%A8Cpp/"/>
+    <url>/2023/03/29/SpringCloud%E4%B8%8BJNA%E8%B0%83%E7%94%A8Cpp/</url>
+    
+    <content type="html"><![CDATA[<h1 id="1、Idea准备"><a href="#1、Idea准备" class="headerlink" title="1、Idea准备"></a>1、Idea准备</h1><h2 id="1、创建Spring-cloud工程"><a href="#1、创建Spring-cloud工程" class="headerlink" title="1、创建Spring cloud工程"></a>1、创建Spring cloud工程</h2><p><a href="https://xuzengsong.github.io/2023/03/28/springCloud/#SpringCloud01">参考SpringCloud资料</a></p><p><a href="https://www.cnblogs.com/teach/p/16300271.html">Springboot创建</a></p><p><img src="https://fastly.jsdelivr.net/gh/xuzengsong/picbed@main//img/image-20230329193530840.png" alt="image-20230329193530840"></p><h2 id="2、在需要调用的微服务中引入坐标"><a href="#2、在需要调用的微服务中引入坐标" class="headerlink" title="2、在需要调用的微服务中引入坐标"></a>2、在需要调用的微服务中引入坐标</h2><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><code class="hljs java">&lt;dependency&gt;<br>  &lt;groupId&gt;net.java.dev.jna&lt;/groupId&gt;<br>  &lt;artifactId&gt;jna&lt;/artifactId&gt;<br>  &lt;version&gt;<span class="hljs-number">5.5</span><span class="hljs-number">.0</span>&lt;/version&gt;<br>&lt;/dependency&gt;<br><br>&lt;dependency&gt;<br>  &lt;groupId&gt;net.java.dev.jna&lt;/groupId&gt;<br>  &lt;artifactId&gt;jna-platform&lt;/artifactId&gt;<br>  &lt;version&gt;<span class="hljs-number">5.5</span><span class="hljs-number">.0</span>&lt;/version&gt;<br>&lt;/dependency&gt;<br>&lt;!--整合Dll开发--&gt;<br></code></pre></td></tr></table></figure><p>比如我这的user-service</p><p><img src="https://fastly.jsdelivr.net/gh/xuzengsong/picbed@main//img/image-20230329194136294.png" alt="image-20230329194136294"></p><h2 id="3、调用dll库"><a href="#3、调用dll库" class="headerlink" title="3、调用dll库"></a>3、调用dll库</h2><p><img src="https://fastly.jsdelivr.net/gh/xuzengsong/picbed@main//img/image-20230329194305495.png" alt="image-20230329194305495"></p><h1 id="2、cpp动态库准备（这里Windows环境）"><a href="#2、cpp动态库准备（这里Windows环境）" class="headerlink" title="2、cpp动态库准备（这里Windows环境）"></a>2、cpp动态库准备（这里Windows环境）</h1><h2 id="1、创建一个dll项目"><a href="#1、创建一个dll项目" class="headerlink" title="1、创建一个dll项目"></a>1、创建一个dll项目</h2><p><img src="https://fastly.jsdelivr.net/gh/xuzengsong/picbed@main//img/image-20230329194439076.png" alt="image-20230329194439076"></p><h2 id="2、编辑cpp"><a href="#2、编辑cpp" class="headerlink" title="2、编辑cpp"></a>2、编辑cpp</h2><p><img src="https://fastly.jsdelivr.net/gh/xuzengsong/picbed@main//img/image-20230329194957984.png" alt="image-20230329194957984"></p><h2 id="3、编辑头文件"><a href="#3、编辑头文件" class="headerlink" title="3、编辑头文件"></a>3、编辑头文件</h2><p><img src="https://fastly.jsdelivr.net/gh/xuzengsong/picbed@main//img/image-20230329195029298.png" alt="image-20230329195029298"></p><h2 id="4、生成dll"><a href="#4、生成dll" class="headerlink" title="4、生成dll"></a>4、生成dll</h2><p><img src="https://fastly.jsdelivr.net/gh/xuzengsong/picbed@main//img/image-20230329195146473.png" alt="image-20230329195146473"></p><h1 id="3、JAVA与C-的类型对应"><a href="#3、JAVA与C-的类型对应" class="headerlink" title="3、JAVA与C++的类型对应"></a>3、JAVA与C++的类型对应</h1><p><img src="https://fastly.jsdelivr.net/gh/xuzengsong/picbed@main//img/image-20230329195637241.png" alt="image-20230329195637241"></p><p><a href="https://blog.csdn.net/weixin_44120785/article/details/128046886">Linux下JAVA使用JNA调用C++的动态链接库（g++或者gcc编译的.so文件）</a></p><p><a href="https://blog.csdn.net/m0_37787662/article/details/105818459">Java-JNA框架调用dll动态库实例</a></p><p><a href="https://blog.csdn.net/redchairman/article/details/108438202">彻底解决JNA String(Java)转char*(c++)乱码问题</a></p>]]></content>
+    
+    
+    <categories>
+      
+      <category>工具</category>
+      
+      <category>C++&amp;JAVA微服务</category>
+      
+    </categories>
+    
+    
+    <tags>
+      
+      <tag>node</tag>
+      
+    </tags>
+    
+  </entry>
+  
+  
+  
+  <entry>
+    <title>JNAvsJNI</title>
+    <link href="/2023/03/29/JNAvsJNI/"/>
+    <url>/2023/03/29/JNAvsJNI/</url>
+    
+    <content type="html"><![CDATA[<p>Jna与Jni调用C/C++效率比较</p><p>前言：       </p><pre><code class="hljs">   JNA是建立在JNI技术基础之上的一个Java类库，它使您可以方便地使用java直接访问动态链接库中的函数。原来使用JNI，你必须手工用C写一个动态链接库，在C语言中映射Java的数据类型。JNA中，它提供了一个动态的C语言编写的转发器，可以自动实现Java和C的数据类型映射。你不再需要编写C动态链接库。当然，这也意味着，使用JNA技术比使用JNI技术调用动态链接库会有些微的性能损失。可能速度会降低十几倍。就看你的需求来用了。</code></pre><p>Jna：花时131ms如下图所示：</p><p><img src="https://img-blog.csdnimg.cn/20190402110836618.PNG?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L2hxeTE3MTkyMzkzMzc=,size_16,color_FFFFFF,t_70" alt="img"></p><p><img src="https://fastly.jsdelivr.net/gh/xuzengsong/picbed@main//img/20190402111012441.PNG" alt="img"></p><p>Jni：花时8ms如下图所示：</p><p><img src="https://fastly.jsdelivr.net/gh/xuzengsong/picbed@main//img/20190402111144866.PNG" alt="img"></p><p><img src="https://fastly.jsdelivr.net/gh/xuzengsong/picbed@main//img/20190402111232503.PNG" alt="img"></p><p> 总结：可见Jna调用C函数效率比jni低，但jna不用自己用c写一系列动态库等配置，用法比较简单。所以现在一般都使用jna调用c/c++函数。</p><p>可参考博客：<a href="https://blog.csdn.net/drifterj/article/details/7841810">https://blog.csdn.net/drifterj/article/details/7841810</a></p><p>附上jna java端代码：</p><p>import com.sun.jna.Library;<br>import com.sun.jna.Native;</p><p>import sun.security.jca.GetInstance.Instance;</p><p>public class TestJna {</p><pre><code class="hljs"> public interface CLibrary extends Library &#123;        CLibrary INSTANCE = (CLibrary)Native.loadLibrary(&quot;TestDll&quot;, CLibrary.class); void testJnaTime();       // int add(int a, int b);    &#125;     public static void main(String[] args) &#123;     //   int sum = CLibrary.INSTANCE.add(3, 6);// CLibrary.INSTANCE.testJnaTime();      //  System.out.println(sum); long beginTime = System.currentTimeMillis();    int i;int j;    for(i=1;i&lt;21;i++)&#123;        for(j=i;j&lt;51;j++)&#123;            System.out.println(j);            CLibrary.INSTANCE.testJnaTime();            &#125;    &#125;    long totalTime = System.currentTimeMillis()-beginTime;    System.out.println(&quot;JNI AllTime（ms）：&quot;+totalTime);     &#125;</code></pre><p>​<br>}<br>Jni  java端代码：</p><p>package cn.com.infosec.test;</p><p>public class TestJniTime {<br>    public native  void testTime();<br>     public static void main(String[] args){<br>         System.loadLibrary(“TestJniTime”);<br>         TestJniTime t=new TestJniTime();<br>         long beginTime = System.currentTimeMillis();<br>            int i;int j;<br>            for(i=1;i&lt;51;i++){<br>                for(j=i;j&lt;51;j++){<br>                    System.out.println(j);<br>                     t.testTime();<br>                }<br>            }<br>            long totalTime = System.currentTimeMillis()-beginTime;<br>            System.out.println(“JNI AllTime（ms）：”+totalTime);<br>     }<br>}<br> JniC端代码：</p><p>#include “TestJniTime.h”<br>#include “cn_com_infosec_test_TestJniTime.h”</p><p>JNIEXPORT void JNICALL Java_cn_com_infosec_test_TestJniTime_testTime<br>(JNIEnv *, jobject) {<br>    printf(“hi jni \n”);</p><p>}<br>（其余就不写的，百度上很多）</p><p>Jni教程推荐看博客：<a href="http://www.runoob.com/w3cnote/jni-getting-started-tutorials.html">http://www.runoob.com/w3cnote/jni-getting-started-tutorials.html</a></p><p>不同的是：在生成.h文件时，我用的是以下方法：</p><p>javah -jni -classpath E:\eclipse.sts\Test\src  cn.com.infosec.test.TestJniTime</p><p>E:\eclipse.sts\Test\src这个路径是你的包所在的路径，后面的是全包名+class文件</p><p>Jni教程推荐看博客：</p><p><a href="https://blog.csdn.net/gwd1154978352/article/details/55097376/">https://blog.csdn.net/gwd1154978352/article/details/55097376/</a></p><p>不同：在c代码处：<br><code>extern &quot;C&quot;_declspec(dllexport) int add(int a, int b);</code></p><p>直接复制以上博客的这个代码时候会报错，于是我把“C”右边的行线删了，自己写个下划线，就好了。如下：</p><p><code>extern &quot;C&quot; —declspec(dllexport) int add(int a, int b);</code><br>————————————————<br>版权声明：本文为CSDN博主「么滴感情de杀手」的原创文章，遵循CC 4.0 BY-SA版权协议，转载请附上原文出处链接及本声明。<br>原文链接：<a href="https://blog.csdn.net/hqy1719239337/article/details/88966183">https://blog.csdn.net/hqy1719239337/article/details/88966183</a></p>]]></content>
+    
+    
+    <categories>
+      
+      <category>工具</category>
+      
+      <category>C++&amp;JAVA微服务</category>
+      
+    </categories>
+    
+    
+    <tags>
+      
+      <tag>node</tag>
+      
+    </tags>
+    
+  </entry>
+  
+  
+  
+  <entry>
+    <title>C++利用Sidecar模式实现微服务化的流程</title>
+    <link href="/2023/03/29/C++%E5%88%A9%E7%94%A8Sidecar%E6%A8%A1%E5%BC%8F%E5%AE%9E%E7%8E%B0%E5%BE%AE%E6%9C%8D%E5%8A%A1%E5%8C%96%E7%9A%84%E6%B5%81%E7%A8%8B/"/>
+    <url>/2023/03/29/C++%E5%88%A9%E7%94%A8Sidecar%E6%A8%A1%E5%BC%8F%E5%AE%9E%E7%8E%B0%E5%BE%AE%E6%9C%8D%E5%8A%A1%E5%8C%96%E7%9A%84%E6%B5%81%E7%A8%8B/</url>
+    
+    <content type="html"><![CDATA[<h1 id="C-利用Sidecar模式实现微服务化的流程"><a href="#C-利用Sidecar模式实现微服务化的流程" class="headerlink" title="C++利用Sidecar模式实现微服务化的流程"></a>C++利用Sidecar模式实现微服务化的流程</h1><h2 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h2><p>  公司近期要将园区所有的服务做成微服务模式，因之前负责的网关服务是C++来实现的，因此研究了一下非jvm语言实现向Eureka注册中心注册的过程，特此记录，以便后续的温习，初次了解微服务，如有错误，欢迎指正。<br>  关于sidecar模式的原理和为何采用sidecar模式在网上能够找到相关的博客去了解，这里转载几篇好的文章，大家可以学习了解一下。</p><p><a href="https://blog.csdn.net/StarskyBoy/article/details/85012642">https://blog.csdn.net/StarskyBoy/article/details/85012642</a><br><a href="https://blog.csdn.net/yang00322/article/details/77964703">https://blog.csdn.net/yang00322/article/details/77964703</a><br><a href="https://www.jianshu.com/p/a96056870143">https://www.jianshu.com/p/a96056870143</a></p><h2 id="流程"><a href="#流程" class="headerlink" title="流程"></a>流程</h2><p> 下面主要来记录一下服务和Eureka注册中心交互的过程，以下的过程是根据java的同事在通过配置Eureka客户端，来向Eureka服务器发起请求时，用wireshark抓包工具查看完整的交互流程。再通过Eureka提供的REST接口，利用C++里面的Poco库的http相关接口，来实现微服务化向Eureka注册，并实现服务的监控。<br>1、服务注册<br>REST接口：POST /eureka/v2/apps/appID<br>代码段如下：</p><pre><code class="hljs">    Poco::URI uri(&quot;http://ip:port/eureka/apps/appID&quot;);    Poco::Net::HTTPClientSession session(uri.getHost(), uri.getPort());    session.setKeepAlive(true);    //创建 HTTP request    Poco::Net::HTTPRequest request(Poco::Net::HTTPRequest::HTTP_PUT, uri.getPathAndQuery(),               Poco::Net::HTTPMessage::HTTP_1_1);    request.setContentType(&quot;application/json; charset=utf-8&quot;);    request.setContentLength((int)msg.length());        std::ostream &amp;reqOstr = session.sendRequest(request);    reqOstr &lt;&lt; msg;</code></pre><p>其中，appID是要向Eureka注册的服务名，msg是一个标准的json字符串，json字符串的基本内容如下图：</p><p><img src="https://fastly.jsdelivr.net/gh/xuzengsong/picbed@main//img/20191109112024899.png" alt="在这里插入图片描述"></p><p>*以下是我整理的注册发给Eureka的json字符串的相关字段释义：</p><p>InstanceInfo服务实例信息字段：<br>1）instanceId : 实例id<br>2）hostName: 主机名称<br>3）app：应用名<br>4）ipAddr：ip地址<br>5）status：实例状态，如UP，DOWN,STARTING,OUT_OF_SERVICE,UNKOWN<br>6）overriddenStatus：外界需要强制覆盖的状态值，默认为UNKOWN<br>7）port：端口号<br>8）securePort：https的端口号<br>9）countryId：被废弃的属性，属性为1，代表US<br>10）dataCenterInfo：dataCenter的信息，Netflix或者Amazon或者MyOwn<br>11）leaseInfo：租约信息<br>12）metadata：应用实例的元数据信息<br>13）homePageUrl：应用实例的首页url<br>14）statusPageUrl：应用实例的状态页<br>15）healthCheckUrl；应用实例的健康检查url<br>16）vipAddress：虚拟ip地址<br>17）secureVipAddress：https的虚拟ip地址<br>18）isCoordinatingDiscoveryServer：首先标识是否是DiscoveryServer,其次标识该DiscoveryServer是否是响应你请求的实例<br>19）lastUpdatedTimestamp：状态信息最后更新时间<br>20）lastDirtyTimestamp：实例信息最新的过期时间，在client端用于标识<br>21）sid：被废弃的属性，默认为na<br>22）actionType：标识EurekaServer对该实例执行的操作，包括ADDED,MODIFIED,DELETE这三类<br>23）asgName：在AWS的autoscaling group的名称<br>LeaseInfo租约信息字段：<br>以下参数主要用于标识应用实例的心跳情况，比如约定的心跳周期，租约有效期，最后一次续约时间等。<br>1）renewalIntervalInSecs：client端续约的间隔时间<br>2）durationInSecs：client端需要设定的租约的有效时长<br>3）registrationTimestamp: Server端设置的该租约第一次注册时间<br>4）lastRenewalTimestamp: Server端设置的该租约最后一次续约时间<br>5）evictionTimestamp；Server端设置的该租约被剔除的时间<br>6）serviceUpTimestamp：Server端设置的该服务实例标记为Up的时间*</p><h2 id="2、获取服务实例"><a href="#2、获取服务实例" class="headerlink" title="2、获取服务实例"></a>2、获取服务实例</h2><p>获取服务实例的接口有两个，一个是获取全量服务实例列表，即每次获取Eureka服务器上的所有实例，另外一个是实现增量实例列表，增量拉取变化的服务信息，然后本地去做更新。<br>REST接口：<br>全量：GET /eureka/apps<br>增量：GET /eureka/apps/delta<br>这里为了方便只是做了全量的实现，代码段如下：</p><pre><code class="hljs">    Poco::URI uri(&quot;http://ip:port/eureka/apps&quot;);    Poco::Net::HTTPClientSession session(uri.getHost(), uri.getPort());    Poco::Net::HTTPRequest request(Poco::Net::HTTPRequest::HTTP_GET, uri.getPathAndQuery());    session.sendRequest(request);</code></pre><p>这里通过抓包来分析，只有第一次调用的是全量的接口，后面每次发送心跳后都会调用一次获取增量的接口，来做本地服务实例的更新。</p><h2 id="3、心跳检测-心跳续约"><a href="#3、心跳检测-心跳续约" class="headerlink" title="3、心跳检测/心跳续约"></a>3、心跳检测/心跳续约</h2><p>注册完之后，会根据配置的心跳时间来规律的向Eureka发送心跳，告诉它还“活着”，如果超过续约时间还没有发接收到心跳，Eureka服务端会将服务自动剔除。这个时间间隔是可配的，上面字段释义里面已经提到。<br>REST接口：PUT /eureka/apps/appID/instanceID<br>（instanceId是和服务实例相关联的唯一id，默认组成为hostname+appId+端口号）<br>代码同注册的代码段，只需要将http的请求方式post改成put即可。</p><h2 id="4、服务下线"><a href="#4、服务下线" class="headerlink" title="4、服务下线"></a>4、服务下线</h2><p>服务下线，当服务主动停止后，会触发一个服务下线的REST请求，告诉Eureka下线，此时Eureka会将服务设置为DWON，并将消息广播发送出去，并更新缓存清单。<br>REST接口：DELETE/eureka/apps/appId/instanceId</p><h2 id="5、健康检查"><a href="#5、健康检查" class="headerlink" title="5、健康检查"></a>5、健康检查</h2><p>服务微服务化之后，会对里面的业务进行自我监控，如果某个业务断开连接或者不正常工作，就需要发送给Eureka注册中心，将服务的状态从UP改为DOWN，Eureka注册中心就不会再向客户端发起请求，这样的一个流程就叫做健康检测。健康状态接口还可以通过<a href="http://ip:port/health来查看，内容如下：">http://ip:port/health来查看，内容如下：</a><br>Example：</p><figure class="highlight json"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><code class="hljs json"><span class="hljs-punctuation">&#123;</span><br><span class="hljs-attr">&quot;description&quot;</span><span class="hljs-punctuation">:</span><span class="hljs-string">&quot; Eureka  Client&quot;</span><span class="hljs-punctuation">,</span><br><span class="hljs-attr">&quot;status&quot;</span><span class="hljs-punctuation">:</span><span class="hljs-string">&quot;UP&quot;</span><br><span class="hljs-punctuation">&#125;</span><br><br></code></pre></td></tr></table></figure><p>总结<br>整个流程下来其实不难，我理解的是这样，sidecar模式其实也是在本身存在的服务基础上实现一个健康检查接口，向Eureka服务端注册，并向Eureka服务端反馈自身的一个健康情况。<br>第一次写博客，如有错误或者不当的地方，欢迎指正！如果有侵权的地方，请及时告知，谢谢！<br>————————————————<br>版权声明：本文为CSDN博主「天真无邪的小白程序员」的原创文章，遵循CC 4.0 BY-SA版权协议，转载请附上原文出处链接及本声明。<br>原文链接：<a href="https://blog.csdn.net/qq_45857272/article/details/102983834">https://blog.csdn.net/qq_45857272/article/details/102983834</a></p>]]></content>
+    
+    
+    <categories>
+      
+      <category>工具</category>
+      
+      <category>C++&amp;JAVA微服务</category>
+      
+    </categories>
+    
+    
+    <tags>
+      
+      <tag>node</tag>
+      
+    </tags>
+    
+  </entry>
+  
+  
+  
+  <entry>
     <title>nacos集群搭建</title>
     <link href="/2023/03/28/nacos%E9%9B%86%E7%BE%A4%E6%90%AD%E5%BB%BA/"/>
     <url>/2023/03/28/nacos%E9%9B%86%E7%BE%A4%E6%90%AD%E5%BB%BA/</url>
