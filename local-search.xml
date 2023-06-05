@@ -86,6 +86,33 @@
   
   <entry>
     <title>环境安装</title>
+    <link href="/2023/06/05/%E6%93%8D%E4%BD%9C%E6%96%B9%E6%B3%95/"/>
+    <url>/2023/06/05/%E6%93%8D%E4%BD%9C%E6%96%B9%E6%B3%95/</url>
+    
+    <content type="html"><![CDATA[<h1 id="操作方法"><a href="#操作方法" class="headerlink" title="操作方法"></a>操作方法</h1><h2 id="远程方法"><a href="#远程方法" class="headerlink" title="远程方法"></a>远程方法</h2><p><strong>工具：</strong>向日葵远程控制</p><img src="https://fastly.jsdelivr.net/gh/xuzengsong/picbed@main//img/image-20230604102527370.png" alt="image-20230604102527370" style="zoom:50%;" /><table><thead><tr><th>向日葵远程控制</th><th>识别码：522403730</th><th>************</th></tr></thead></table><h2 id="已安装环境："><a href="#已安装环境：" class="headerlink" title="已安装环境："></a>已安装环境：</h2><p><strong>anaconda路径:</strong><img src="https://fastly.jsdelivr.net/gh/xuzengsong/picbed@main//img/image-20230604103003619.png" alt="image-20230604103003619"></p><p><strong>windows下Pytorch环境：</strong><img src="https://fastly.jsdelivr.net/gh/xuzengsong/picbed@main//img/image-20230604103105658.png" alt="image-20230604103105658"></p><p><strong>VM虚拟机：</strong></p><img src="https://fastly.jsdelivr.net/gh/xuzengsong/picbed@main//img/image-20230604103307536.png" alt="image-20230604103307536" style="zoom:50%;" /><p><strong>VM虚拟机连接工具Mobaxterm：</strong></p><img src="https://fastly.jsdelivr.net/gh/xuzengsong/picbed@main//img/image-20230604103414725.png" alt="image-20230604103414725" style="zoom: 50%;" /><p><strong>debian11账户密码：</strong></p><table><thead><tr><th>账户</th><th>密码</th></tr></thead><tbody><tr><td>root</td><td>************</td></tr></tbody></table><p><strong>文件存放目录：</strong></p><table><thead><tr><th>windows</th><th>debian</th></tr></thead><tbody><tr><td>E:\workSpace\自己姓名</td><td>/home_extro/自己姓名</td></tr></tbody></table><p><img src="https://fastly.jsdelivr.net/gh/xuzengsong/picbed@main//img/image-20230604103948524.png" alt="image-20230604103948524"></p><img src="https://fastly.jsdelivr.net/gh/xuzengsong/picbed@main//img/image-20230604103924943.png" alt="image-20230604103924943" style="zoom:50%;" /><p><strong>windows远程连接Linux vscode</strong>:</p><p>打开windows下VScode</p><img src="https://fastly.jsdelivr.net/gh/xuzengsong/picbed@main//img/image-20230604104303858.png" alt="image-20230604104303858" style="zoom:50%;" /><p>输入Linux账户（root）的密码:</p><img src="https://fastly.jsdelivr.net/gh/xuzengsong/picbed@main//img/image-20230604104416415.png" alt="image-20230604104416415" style="zoom:50%;" /><p><strong>PS：</strong>windows安装的pytorch版本为GPU版，用于训练</p><p>虚拟机Linux（debian11）安装的pytorch版本为cpu版，用于推理（onnx）</p><p><a href="https://datawhalechina.github.io/thorough-pytorch/%E7%AC%AC%E4%B9%9D%E7%AB%A0/9.1%20%E4%BD%BF%E7%94%A8ONNX%E8%BF%9B%E8%A1%8C%E9%83%A8%E7%BD%B2%E5%B9%B6%E6%8E%A8%E7%90%86.html">onnx使用方法</a></p><p>此外安装了netron,可以可视化onnx模型：</p><p><img src="https://fastly.jsdelivr.net/gh/xuzengsong/picbed@main//img/image-20230604105620391.png" alt="image-20230604105620391"></p><img src="https://fastly.jsdelivr.net/gh/xuzengsong/picbed@main//img/image-20230604105657486.png" alt="image-20230604105657486" style="zoom:50%;" />]]></content>
+    
+    
+    <categories>
+      
+      <category>工具</category>
+      
+      <category>xx电脑操作方法</category>
+      
+    </categories>
+    
+    
+    <tags>
+      
+      <tag>node</tag>
+      
+    </tags>
+    
+  </entry>
+  
+  
+  
+  <entry>
+    <title>环境安装</title>
     <link href="/2023/06/05/%E7%8E%AF%E5%A2%83%E5%AE%89%E8%A3%85/"/>
     <url>/2023/06/05/%E7%8E%AF%E5%A2%83%E5%AE%89%E8%A3%85/</url>
     
