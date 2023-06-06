@@ -1,0 +1,736 @@
+
+
+<!DOCTYPE html>
+<html lang="zh-CN" data-default-color-scheme=auto>
+
+
+
+<head>
+  <meta charset="UTF-8">
+  <link rel="apple-touch-icon" sizes="76x76" href="/img/avatar.jpg">
+  <link rel="icon" href="/img/avatar.jpg">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0, shrink-to-fit=no">
+  <meta http-equiv="x-ua-compatible" content="ie=edge">
+  
+  <meta name="theme-color" content="#2f4154">
+  <meta name="author" content="Xuxx">
+  <meta name="keywords" content="">
+  
+    <meta name="description" content="Debian11 系统环境初始化一、Debian11 查看系统环境状态Debian11 系统安装后，在进行系统环境初始化之前，首先检查系统配置状态。 1.1、df 命令 查看磁盘df 命令 的英文全称：Disk Free，主要是用于显示系统上可使用的磁盘空间。默认显示单位为KB，建议使用 df -h 的参数组合，根据磁盘容量自动变换合适的单位，更利于阅读理解。以下为常用的查看磁盘空间的命令汇总。">
+<meta property="og:type" content="article">
+<meta property="og:title" content="debian初始化安装">
+<meta property="og:url" content="http://example.com/2023/06/06/Debian11%20%E7%B3%BB%E7%BB%9F%E7%8E%AF%E5%A2%83%E5%88%9D%E5%A7%8B%E5%8C%96/index.html">
+<meta property="og:site_name" content="S.un">
+<meta property="og:description" content="Debian11 系统环境初始化一、Debian11 查看系统环境状态Debian11 系统安装后，在进行系统环境初始化之前，首先检查系统配置状态。 1.1、df 命令 查看磁盘df 命令 的英文全称：Disk Free，主要是用于显示系统上可使用的磁盘空间。默认显示单位为KB，建议使用 df -h 的参数组合，根据磁盘容量自动变换合适的单位，更利于阅读理解。以下为常用的查看磁盘空间的命令汇总。">
+<meta property="og:locale" content="zh_CN">
+<meta property="article:published_time" content="2023-06-06T02:07:33.000Z">
+<meta property="article:modified_time" content="2023-06-06T12:18:34.192Z">
+<meta property="article:author" content="Xuxx">
+<meta property="article:tag" content="node">
+<meta name="twitter:card" content="summary_large_image">
+  
+  
+  
+  <title>debian初始化安装 - S.un</title>
+
+  <link  rel="stylesheet" href="https://lib.baomitu.com/twitter-bootstrap/4.6.1/css/bootstrap.min.css" />
+
+
+
+  <link  rel="stylesheet" href="https://lib.baomitu.com/github-markdown-css/4.0.0/github-markdown.min.css" />
+
+  <link  rel="stylesheet" href="https://lib.baomitu.com/hint.css/2.7.0/hint.min.css" />
+
+  <link  rel="stylesheet" href="https://lib.baomitu.com/fancybox/3.5.7/jquery.fancybox.min.css" />
+
+
+
+<!-- 主题依赖的图标库，不要自行修改 -->
+<!-- Do not modify the link that theme dependent icons -->
+
+<link rel="stylesheet" href="//at.alicdn.com/t/font_1749284_hj8rtnfg7um.css">
+
+
+
+<link rel="stylesheet" href="//at.alicdn.com/t/font_1736178_lbnruvf0jn.css">
+
+
+<link  rel="stylesheet" href="/css/main.css" />
+
+
+  <link id="highlight-css" rel="stylesheet" href="/css/highlight.css" />
+  
+    <link id="highlight-css-dark" rel="stylesheet" href="/css/highlight-dark.css" />
+  
+
+
+
+
+  <script id="fluid-configs">
+    var Fluid = window.Fluid || {};
+    Fluid.ctx = Object.assign({}, Fluid.ctx)
+    var CONFIG = {"hostname":"example.com","root":"/","version":"1.9.4","typing":{"enable":true,"typeSpeed":70,"cursorChar":"_","loop":false,"scope":[]},"anchorjs":{"enable":true,"element":"h1,h2,h3,h4,h5,h6","placement":"left","visible":"hover","icon":""},"progressbar":{"enable":true,"height_px":3,"color":"#29d","options":{"showSpinner":false,"trickleSpeed":100}},"code_language":{"enable":true,"default":"TEXT"},"copy_btn":true,"image_caption":{"enable":true},"image_zoom":{"enable":true,"img_url_replace":["",""]},"toc":{"enable":true,"placement":"right","headingSelector":"h1,h2,h3,h4,h5,h6","collapseDepth":0},"lazyload":{"enable":true,"loading_img":"/img/loading.gif","onlypost":false,"offset_factor":2},"web_analytics":{"enable":true,"follow_dnt":true,"baidu":null,"google":null,"gtag":null,"tencent":{"sid":null,"cid":null},"woyaola":null,"cnzz":null,"leancloud":{"app_id":null,"app_key":null,"server_url":null,"path":"window.location.pathname","ignore_local":false}},"search_path":"/local-search.xml"};
+
+    if (CONFIG.web_analytics.follow_dnt) {
+      var dntVal = navigator.doNotTrack || window.doNotTrack || navigator.msDoNotTrack;
+      Fluid.ctx.dnt = dntVal && (dntVal.startsWith('1') || dntVal.startsWith('yes') || dntVal.startsWith('on'));
+    }
+  </script>
+  <script  src="/js/utils.js" ></script>
+  <script  src="/js/color-schema.js" ></script>
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+
+
+  
+<meta name="generator" content="Hexo 5.4.2"></head>
+
+
+<body>
+  
+
+  <header>
+    
+
+<div class="header-inner" style="height: 70vh;">
+  <nav id="navbar" class="navbar fixed-top  navbar-expand-lg navbar-dark scrolling-navbar">
+  <div class="container">
+    <a class="navbar-brand" href="/">
+      <strong>S.un</strong>
+    </a>
+
+    <button id="navbar-toggler-btn" class="navbar-toggler" type="button" data-toggle="collapse"
+            data-target="#navbarSupportedContent"
+            aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+      <div class="animated-icon"><span></span><span></span><span></span></div>
+    </button>
+
+    <!-- Collapsible content -->
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+      <ul class="navbar-nav ml-auto text-center">
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/">
+                <i class="iconfont icon-home-fill"></i>
+                <span>首页</span>
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/archives/">
+                <i class="iconfont icon-archive-fill"></i>
+                <span>归档</span>
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/categories/">
+                <i class="iconfont icon-category-fill"></i>
+                <span>分类</span>
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/tags/">
+                <i class="iconfont icon-tags-fill"></i>
+                <span>标签</span>
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/about/">
+                <i class="iconfont icon-user-fill"></i>
+                <span>关于</span>
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/links/">
+                <i class="iconfont icon-link-fill"></i>
+                <span>友链</span>
+              </a>
+            </li>
+          
+        
+        
+          <li class="nav-item" id="search-btn">
+            <a class="nav-link" target="_self" href="javascript:;" data-toggle="modal" data-target="#modalSearch" aria-label="Search">
+              <i class="iconfont icon-search"></i>
+            </a>
+          </li>
+          
+        
+        
+          <li class="nav-item" id="color-toggle-btn">
+            <a class="nav-link" target="_self" href="javascript:;" aria-label="Color Toggle">
+              <i class="iconfont icon-dark" id="color-toggle-icon"></i>
+            </a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+</nav>
+
+  
+
+<div id="banner" class="banner" parallax=true
+     style="background: url('/img/hutao.jpg') no-repeat center center; background-size: cover;">
+  <div class="full-bg-img">
+    <div class="mask flex-center" style="background-color: rgba(0, 0, 0, 0.3)">
+      <div class="banner-text text-center fade-in-up">
+        <div class="h2">
+          
+            <span id="subtitle" data-typed-text="debian初始化安装"></span>
+          
+        </div>
+
+        
+          
+  <div class="mt-3">
+    
+      <span class="post-meta mr-2">
+        <i class="iconfont icon-author" aria-hidden="true"></i>
+        Xuxx
+      </span>
+    
+    
+      <span class="post-meta">
+        <i class="iconfont icon-date-fill" aria-hidden="true"></i>
+        <time datetime="2023-06-06 10:07" pubdate>
+          2023年6月6日 上午
+        </time>
+      </span>
+    
+  </div>
+
+  <div class="mt-1">
+    
+      <span class="post-meta mr-2">
+        <i class="iconfont icon-chart"></i>
+        
+          2.5k 字
+        
+      </span>
+    
+
+    
+      <span class="post-meta mr-2">
+        <i class="iconfont icon-clock-fill"></i>
+        
+        
+        
+          21 分钟
+        
+      </span>
+    
+
+    
+    
+  </div>
+
+
+        
+      </div>
+
+      
+    </div>
+  </div>
+</div>
+
+</div>
+
+  </header>
+
+  <main>
+    
+      
+
+<div class="container-fluid nopadding-x">
+  <div class="row nomargin-x">
+    <div class="side-col d-none d-lg-block col-lg-2">
+      
+
+    </div>
+
+    <div class="col-lg-8 nopadding-x-md">
+      <div class="container nopadding-x-md" id="board-ctn">
+        <div id="board">
+          <article class="post-content mx-auto">
+            <!-- SEO header -->
+            <h1 style="display: none">debian初始化安装</h1>
+            
+            
+              <div class="markdown-body">
+                
+                <h1 id="Debian11-系统环境初始化"><a href="#Debian11-系统环境初始化" class="headerlink" title="Debian11 系统环境初始化"></a>Debian11 系统环境初始化</h1><h2 id="一、Debian11-查看系统环境状态"><a href="#一、Debian11-查看系统环境状态" class="headerlink" title="一、Debian11 查看系统环境状态"></a>一、Debian11 查看系统环境状态</h2><p>Debian11 系统安装后，在进行系统环境初始化之前，首先检查系统配置状态。</p>
+<h3 id="1-1、df-命令-查看磁盘"><a href="#1-1、df-命令-查看磁盘" class="headerlink" title="1.1、df 命令 查看磁盘"></a>1.1、df 命令 查看磁盘</h3><p>df 命令 的英文全称：Disk Free，主要是用于显示系统上可使用的磁盘空间。默认显示单位为KB，建议使用 <strong>df -h</strong> 的参数组合，根据磁盘容量自动变换合适的单位，更利于阅读理解。以下为常用的查看磁盘空间的命令汇总。</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><code class="hljs bash"><span class="hljs-built_in">df</span> -i <span class="hljs-comment">#输出文件系统的 Inode 信息</span><br><span class="hljs-built_in">df</span> -h <span class="hljs-comment">#以人类易读的格式输出</span><br><span class="hljs-built_in">df</span> -h /data <span class="hljs-comment">#显示特定文件系统已使用的空间</span><br><span class="hljs-built_in">df</span> -h --total <span class="hljs-comment">#输出所有文件系统使用情况汇总</span><br><span class="hljs-built_in">df</span> -hT <span class="hljs-comment">#只打印本地文件系统磁盘的使用情况</span><br><span class="hljs-built_in">df</span> -a <span class="hljs-comment">#显示所有文件系统的磁盘使用情况</span><br><span class="hljs-built_in">df</span> -T <span class="hljs-comment">#输出所有已挂载文件系统的类型</span><br><span class="hljs-built_in">df</span> -k <span class="hljs-comment">#按块大小输出文件系统磁盘使用情况</span><br><span class="hljs-built_in">df</span> -t ext4 <span class="hljs-comment">#打印特定文件系统类型的磁盘使用情况</span><br><span class="hljs-built_in">df</span> -x ext4 <span class="hljs-comment">#使用 -x 选项排除特定的文件类型</span><br><span class="hljs-built_in">df</span> --output=fstype,size,iused <span class="hljs-comment">#在 df 命令的输出中只打印特定的字段</span><br></code></pre></td></tr></table></figure>
+
+
+
+<h3 id="1-2、free-命令-查看内存"><a href="#1-2、free-命令-查看内存" class="headerlink" title="1.2、free 命令 查看内存"></a>1.2、free 命令 查看内存</h3><p>free 命令 主要用于查看当前系统内存的使用情况，它显示系统中剩余的及已用的物理内存和交换内存，还有共享内存和被核心使用的缓冲区等信息。</p>
+<figure class="highlight dsconfig"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><code class="hljs dsconfig"><span class="hljs-string">free</span> -<span class="hljs-string">b</span>, <span class="hljs-built_in">--bytes</span> <span class="hljs-comment">#以字节显示输出</span><br><span class="hljs-string">free</span> -<span class="hljs-string">k</span>, <span class="hljs-built_in">--kibi</span> <span class="hljs-comment">#以千字节显示输出</span><br><span class="hljs-string">free</span> -<span class="hljs-string">m</span>, <span class="hljs-built_in">--mebi</span> <span class="hljs-comment">#以兆字节显示输出</span><br><span class="hljs-string">free</span> -<span class="hljs-string">g</span>, <span class="hljs-built_in">--gibi</span> <span class="hljs-comment">#以千兆字节显示输出</span><br><span class="hljs-string">free</span> <span class="hljs-built_in">--tebi</span> <span class="hljs-comment">#以兆兆字节显示输出</span><br><span class="hljs-string">free</span> <span class="hljs-built_in">--pebi</span> <span class="hljs-comment">#以拍字节显示输出</span><br><span class="hljs-string">free</span> -<span class="hljs-string">h</span>, <span class="hljs-built_in">--human</span> <span class="hljs-comment">#显示人类可读的输出</span><br><span class="hljs-string">free</span> <span class="hljs-built_in">--si</span> <span class="hljs-comment">#使用 1000 的倍数而非使用 1024</span><br><span class="hljs-string">free</span> -<span class="hljs-string">l</span>, <span class="hljs-built_in">--lohi</span> <span class="hljs-comment">#显示详细的内存高低统计信息</span><br><span class="hljs-string">free</span> -<span class="hljs-string">t</span>, <span class="hljs-built_in">--total</span> <span class="hljs-comment">#显示内存+交换的总数</span><br><span class="hljs-string">free</span> -<span class="hljs-string">s</span> <span class="hljs-string">N</span>, <span class="hljs-built_in">--seconds</span> <span class="hljs-string">N</span> <span class="hljs-comment">#每N秒重复打印一次</span><br><span class="hljs-string">free</span> -<span class="hljs-string">c</span> <span class="hljs-string">N</span>, <span class="hljs-built_in">--count</span> <span class="hljs-string">N</span> <span class="hljs-comment">#重复打印N次，然后退出</span><br><span class="hljs-string">free</span> -<span class="hljs-string">w</span>, <span class="hljs-built_in">--wide</span> <span class="hljs-comment">#宽版输出</span><br></code></pre></td></tr></table></figure>
+
+
+
+<h3 id="1-3、查看其它"><a href="#1-3、查看其它" class="headerlink" title="1.3、查看其它"></a>1.3、查看其它</h3><p>主要用于查看 Debian11 系统基础硬件配置，如CPU、内存、磁盘、系统内核版本信息等。</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><code class="hljs bash"><span class="hljs-built_in">cat</span> /proc/cpuinfo <span class="hljs-comment">#查看CPU详情</span><br><span class="hljs-built_in">cat</span> /proc/cpuinfo | grep <span class="hljs-string">&quot;model name&quot;</span> <span class="hljs-comment">#查看CPU详情并指定字段</span><br>fdisk -l, --list <span class="hljs-comment">#查看磁盘分区并退出</span><br>fdisk -x, --list-details <span class="hljs-comment">#查看更多磁盘分区并退出</span><br><span class="hljs-built_in">cat</span> /proc/meminfo <span class="hljs-comment">#查看内存详情</span><br><span class="hljs-built_in">cat</span> /proc/meminfo | grep <span class="hljs-string">&quot;MemTotal&quot;</span> <span class="hljs-comment">#查看内存详情并指定字段</span><br><span class="hljs-built_in">uname</span> -r <span class="hljs-comment">#显示操作系统的发行版号</span><br><span class="hljs-built_in">uname</span> -a <span class="hljs-comment">#显示系统名称、节点名称、操作系统的发行版号、内核版本等</span><br></code></pre></td></tr></table></figure>
+
+
+
+<h2 id="二、Debian11-系统环境初始化"><a href="#二、Debian11-系统环境初始化" class="headerlink" title="二、Debian11 系统环境初始化"></a>二、Debian11 系统环境初始化</h2><h3 id="2-1、系统升级"><a href="#2-1、系统升级" class="headerlink" title="2.1、系统升级"></a>2.1、系统升级</h3><figure class="highlight nginx"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><code class="hljs nginx"><span class="hljs-attribute">apt</span> update -y <span class="hljs-comment">#更新系统的包索引或包列表，它不会升级任何软件</span><br>apt upgrade -y <span class="hljs-comment">#将您的软件包升级到最新版本，含软件、安全更新和相关依赖</span><br></code></pre></td></tr></table></figure>
+
+
+
+<h3 id="2-2、安装-SSH"><a href="#2-2、安装-SSH" class="headerlink" title="2.2、安装 SSH"></a>2.2、安装 SSH</h3><p>一般云服务器厂商提供安装的 Linux 操作系统已经自带SSH用于远程链接，但是通过本地安装的虚拟机可能需要手动安装SSH，SSH安装和查看命令如下。</p>
+<figure class="highlight awk"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><code class="hljs awk">apt install ssh <span class="hljs-comment">#安装SSH</span><br><span class="hljs-regexp">/etc/i</span>nit.d/ssh restart <span class="hljs-comment">#重启SSH</span><br>vim <span class="hljs-regexp">/etc/</span>ssh/ssh_config <span class="hljs-comment">#查看配置信息</span><br></code></pre></td></tr></table></figure>
+
+
+
+<p>简单的SSH配置参数，按需调整：</p>
+<figure class="highlight tap"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><code class="hljs tap">Port<span class="hljs-number"> 22 </span><span class="hljs-comment">#修改默认端口号</span><br>PermitRootLogin yes <span class="hljs-comment">#修改root用户可以登录</span><br>ClientAliveInterval<span class="hljs-number"> 60 </span><span class="hljs-comment">#指定服务器端向客户端请求消息的时间间隔</span><br>ClientAliveCountMax<span class="hljs-number"> 3 </span><span class="hljs-comment">#表示服务器发出请求后客户端没有响应的次数达到一定值, 就自动断开</span><br></code></pre></td></tr></table></figure>
+
+
+
+<h3 id="2-3、设置系统时区"><a href="#2-3、设置系统时区" class="headerlink" title="2.3、设置系统时区"></a>2.3、设置系统时区</h3><p>系统时区是指服务器运行使用的时区，一般中国可以设置为上海时区，欧洲设置为德国柏林时区，美国设置为纽约时区，您还可以根据实际需要设置服务器需要的时区。</p>
+<figure class="highlight dsconfig"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><code class="hljs dsconfig"><span class="hljs-string">timedatectl</span> <span class="hljs-built_in">list-timezones</span> <span class="hljs-comment">#列出系统支持的时区</span><br><span class="hljs-string">timedatectl</span> <span class="hljs-built_in">set-timezone</span> <span class="hljs-string">Asia</span>/<span class="hljs-string">Shanghai</span> <span class="hljs-comment">#设置时区为中国上海</span><br><span class="hljs-string">timedatectl</span> <span class="hljs-built_in">set-timezone</span> <span class="hljs-string">Europe</span>/<span class="hljs-string">Berlin</span> <span class="hljs-comment">#设置时区为德国柏林</span><br><span class="hljs-string">timedatectl</span> <span class="hljs-built_in">set-timezone</span> <span class="hljs-string">America</span>/<span class="hljs-string">New_York</span> <span class="hljs-comment">#设置时区为美国纽约</span><br><span class="hljs-string">timedatectl</span> <span class="hljs-comment">#查看系统当前时区</span><br></code></pre></td></tr></table></figure>
+
+
+
+<h3 id="2-4、设置UFW防火墙"><a href="#2-4、设置UFW防火墙" class="headerlink" title="2.4、设置UFW防火墙"></a>2.4、设置UFW防火墙</h3><p>ufw 作为 Debian11 系统官方默认使用的防火墙，它是一个主机端的类似于iptables防火墙配置工具，简单好用。一般场景下使用ufw已经可以满足基本安全需求了。</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><code class="hljs bash">apt install ufw <span class="hljs-comment">#安装防火墙</span><br>ufw allow ssh <span class="hljs-comment">#开放ssh服务</span><br>ufw allow 22/tcp <span class="hljs-comment">#开放22端口</span><br>ufw allow 22/udp <span class="hljs-comment">#开放22端口</span><br>ufw delete allow 80/tcp <span class="hljs-comment">#禁止开放80端口</span><br>ufw allow from 1.1.1.1 to any port 22 <span class="hljs-comment">#允许指定地址访问本机指定端口</span><br>ufw <span class="hljs-built_in">enable</span> <span class="hljs-comment">#开启</span><br>ufw <span class="hljs-built_in">disable</span> <span class="hljs-comment">#禁用</span><br>ufw reload <span class="hljs-comment">#重启</span><br>ufw status <span class="hljs-comment">#查看状态</span><br></code></pre></td></tr></table></figure>
+
+
+
+<h3 id="2-5、设置DNS"><a href="#2-5、设置DNS" class="headerlink" title="2.5、设置DNS"></a>2.5、设置DNS</h3><p>通过命令：vim /etc/resolv.conf 打开，在底部添加如下参数，然后重启。</p>
+<figure class="highlight nginx"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><code class="hljs nginx"><span class="hljs-attribute">nameserver</span> <span class="hljs-number">114.114.114.114</span> <span class="hljs-comment">#大陆电信DNS</span><br>nameserver <span class="hljs-number">8.8.8.8</span> <span class="hljs-comment">#海外谷歌DNS</span><br>systemctl restart networking <span class="hljs-comment">#重启网络</span><br></code></pre></td></tr></table></figure>
+
+
+
+<h3 id="2-6、设置镜像源"><a href="#2-6、设置镜像源" class="headerlink" title="2.6、设置镜像源"></a>2.6、设置镜像源</h3><p>通过命令：vim /etc/apt/sources.list 打开，在底部添加如下参数，以下仅为示例。</p>
+<figure class="highlight awk"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs awk">deb http:<span class="hljs-regexp">//</span>ftp.cn.debian.org/debian sid main <br></code></pre></td></tr></table></figure>
+
+
+
+<p>镜像源如果为 https 开头，则需要安装如下服务：</p>
+<figure class="highlight elm"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs elm"><span class="hljs-title">apt</span> install apt-trans<span class="hljs-keyword">port</span>-https ca-certificates<br></code></pre></td></tr></table></figure>
+                
+              </div>
+            
+            <hr/>
+            <div>
+              <div class="post-metas my-3">
+  
+    <div class="post-meta mr-3 d-flex align-items-center">
+      <i class="iconfont icon-category"></i>
+      
+
+<span class="category-chains">
+  
+  
+    
+      <span class="category-chain">
+        
+  <a href="/categories/%E5%B7%A5%E5%85%B7/" class="category-chain-item">工具</a>
+  
+  
+    <span>></span>
+    
+  <a href="/categories/%E5%B7%A5%E5%85%B7/debian%E5%AE%89%E8%A3%85/" class="category-chain-item">debian安装</a>
+  
+  
+
+  
+
+      </span>
+    
+  
+</span>
+
+    </div>
+  
+  
+    <div class="post-meta">
+      <i class="iconfont icon-tags"></i>
+      
+        <a href="/tags/node/">#node</a>
+      
+    </div>
+  
+</div>
+
+
+              
+  
+
+  <div class="license-box my-3">
+    <div class="license-title">
+      <div>debian初始化安装</div>
+      <div>http://example.com/2023/06/06/Debian11 系统环境初始化/</div>
+    </div>
+    <div class="license-meta">
+      
+        <div class="license-meta-item">
+          <div>作者</div>
+          <div>Xuxx</div>
+        </div>
+      
+      
+        <div class="license-meta-item license-meta-date">
+          <div>发布于</div>
+          <div>2023年6月6日</div>
+        </div>
+      
+      
+      
+        <div class="license-meta-item">
+          <div>许可协议</div>
+          <div>
+            
+              
+              
+                <a target="_blank" href="https://creativecommons.org/licenses/by/4.0/">
+                  <span class="hint--top hint--rounded" aria-label="BY - 署名">
+                    <i class="iconfont icon-by"></i>
+                  </span>
+                </a>
+              
+            
+          </div>
+        </div>
+      
+    </div>
+    <div class="license-icon iconfont"></div>
+  </div>
+
+
+
+              
+                <div class="post-prevnext my-3">
+                  <article class="post-prev col-6">
+                    
+                    
+                      <a href="/2023/06/06/debian%2011%E5%AE%89%E8%A3%85docker/" title="docker常用命令">
+                        <i class="iconfont icon-arrowleft"></i>
+                        <span class="hidden-mobile">docker常用命令</span>
+                        <span class="visible-mobile">上一篇</span>
+                      </a>
+                    
+                  </article>
+                  <article class="post-next col-6">
+                    
+                    
+                      <a href="/2023/06/05/readme/" title="linux下使用pytorch(服务器)">
+                        <span class="hidden-mobile">linux下使用pytorch(服务器)</span>
+                        <span class="visible-mobile">下一篇</span>
+                        <i class="iconfont icon-arrowright"></i>
+                      </a>
+                    
+                  </article>
+                </div>
+              
+            </div>
+
+            
+          </article>
+        </div>
+      </div>
+    </div>
+
+    <div class="side-col d-none d-lg-block col-lg-2">
+      
+  <aside class="sidebar" style="margin-left: -1rem">
+    <div id="toc">
+  <p class="toc-header">
+    <i class="iconfont icon-list"></i>
+    <span>目录</span>
+  </p>
+  <div class="toc-body" id="toc-body"></div>
+</div>
+
+
+
+  </aside>
+
+
+    </div>
+  </div>
+</div>
+
+
+
+
+
+  
+
+
+
+  
+
+
+
+  
+
+
+
+  
+
+
+
+  
+
+
+
+
+
+
+
+    
+
+    
+      <a id="scroll-top-button" aria-label="TOP" href="#" role="button">
+        <i class="iconfont icon-arrowup" aria-hidden="true"></i>
+      </a>
+    
+
+    
+      <div class="modal fade" id="modalSearch" tabindex="-1" role="dialog" aria-labelledby="ModalLabel"
+     aria-hidden="true">
+  <div class="modal-dialog modal-dialog-scrollable modal-lg" role="document">
+    <div class="modal-content">
+      <div class="modal-header text-center">
+        <h4 class="modal-title w-100 font-weight-bold">搜索</h4>
+        <button type="button" id="local-search-close" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body mx-3">
+        <div class="md-form mb-5">
+          <input type="text" id="local-search-input" class="form-control validate">
+          <label data-error="x" data-success="v" for="local-search-input">关键词</label>
+        </div>
+        <div class="list-group" id="local-search-result"></div>
+      </div>
+    </div>
+  </div>
+</div>
+
+    
+
+    
+  </main>
+
+  <footer>
+    <div class="footer-inner">
+  
+    <div class="footer-content">
+       <a href="https://hexo.io" target="_blank" rel="nofollow noopener"><span>Hexo</span></a> <i class="iconfont icon-love"></i> <a href="https://github.com/fluid-dev/hexo-theme-fluid" target="_blank" rel="nofollow noopener"><span>Fluid</span></a> 
+    </div>
+  
+  
+  
+  
+</div>
+
+  </footer>
+
+  <!-- Scripts -->
+  
+  <script  src="https://lib.baomitu.com/nprogress/0.2.0/nprogress.min.js" ></script>
+  <link  rel="stylesheet" href="https://lib.baomitu.com/nprogress/0.2.0/nprogress.min.css" />
+
+  <script>
+    NProgress.configure({"showSpinner":false,"trickleSpeed":100})
+    NProgress.start()
+    window.addEventListener('load', function() {
+      NProgress.done();
+    })
+  </script>
+
+
+<script  src="https://lib.baomitu.com/jquery/3.6.0/jquery.min.js" ></script>
+<script  src="https://lib.baomitu.com/twitter-bootstrap/4.6.1/js/bootstrap.min.js" ></script>
+<script  src="/js/events.js" ></script>
+<script  src="/js/plugins.js" ></script>
+
+
+  <script  src="https://lib.baomitu.com/typed.js/2.0.12/typed.min.js" ></script>
+  <script>
+    (function (window, document) {
+      var typing = Fluid.plugins.typing;
+      var subtitle = document.getElementById('subtitle');
+      if (!subtitle || !typing) {
+        return;
+      }
+      var text = subtitle.getAttribute('data-typed-text');
+      
+        typing(text);
+      
+    })(window, document);
+  </script>
+
+
+
+
+  
+    <script  src="/js/img-lazyload.js" ></script>
+  
+
+
+
+
+  
+<script>
+  Fluid.utils.createScript('https://lib.baomitu.com/tocbot/4.18.2/tocbot.min.js', function() {
+    var toc = jQuery('#toc');
+    if (toc.length === 0 || !window.tocbot) { return; }
+    var boardCtn = jQuery('#board-ctn');
+    var boardTop = boardCtn.offset().top;
+
+    window.tocbot.init(Object.assign({
+      tocSelector     : '#toc-body',
+      contentSelector : '.markdown-body',
+      linkClass       : 'tocbot-link',
+      activeLinkClass : 'tocbot-active-link',
+      listClass       : 'tocbot-list',
+      isCollapsedClass: 'tocbot-is-collapsed',
+      collapsibleClass: 'tocbot-is-collapsible',
+      scrollSmooth    : true,
+      includeTitleTags: true,
+      headingsOffset  : -boardTop,
+    }, CONFIG.toc));
+    if (toc.find('.toc-list-item').length > 0) {
+      toc.css('visibility', 'visible');
+    }
+
+    Fluid.events.registerRefreshCallback(function() {
+      if ('tocbot' in window) {
+        tocbot.refresh();
+        var toc = jQuery('#toc');
+        if (toc.length === 0 || !tocbot) {
+          return;
+        }
+        if (toc.find('.toc-list-item').length > 0) {
+          toc.css('visibility', 'visible');
+        }
+      }
+    });
+  });
+</script>
+
+
+  <script src=https://lib.baomitu.com/clipboard.js/2.0.11/clipboard.min.js></script>
+
+  <script>Fluid.plugins.codeWidget();</script>
+
+
+  
+<script>
+  Fluid.utils.createScript('https://lib.baomitu.com/anchor-js/4.3.1/anchor.min.js', function() {
+    window.anchors.options = {
+      placement: CONFIG.anchorjs.placement,
+      visible  : CONFIG.anchorjs.visible
+    };
+    if (CONFIG.anchorjs.icon) {
+      window.anchors.options.icon = CONFIG.anchorjs.icon;
+    }
+    var el = (CONFIG.anchorjs.element || 'h1,h2,h3,h4,h5,h6').split(',');
+    var res = [];
+    for (var item of el) {
+      res.push('.markdown-body > ' + item.trim());
+    }
+    if (CONFIG.anchorjs.placement === 'left') {
+      window.anchors.options.class = 'anchorjs-link-left';
+    }
+    window.anchors.add(res.join(', '));
+
+    Fluid.events.registerRefreshCallback(function() {
+      if ('anchors' in window) {
+        anchors.removeAll();
+        var el = (CONFIG.anchorjs.element || 'h1,h2,h3,h4,h5,h6').split(',');
+        var res = [];
+        for (var item of el) {
+          res.push('.markdown-body > ' + item.trim());
+        }
+        if (CONFIG.anchorjs.placement === 'left') {
+          anchors.options.class = 'anchorjs-link-left';
+        }
+        anchors.add(res.join(', '));
+      }
+    });
+  });
+</script>
+
+
+  
+<script>
+  Fluid.utils.createScript('https://lib.baomitu.com/fancybox/3.5.7/jquery.fancybox.min.js', function() {
+    Fluid.plugins.fancyBox();
+  });
+</script>
+
+
+  <script>Fluid.plugins.imageCaption();</script>
+
+  <script  src="/js/local-search.js" ></script>
+
+
+
+
+
+<!-- 主题的启动项，将它保持在最底部 -->
+<!-- the boot of the theme, keep it at the bottom -->
+<script  src="/js/boot.js" ></script>
+
+
+  
+
+  <noscript>
+    <div class="noscript-warning">博客在允许 JavaScript 运行的环境下浏览效果更佳</div>
+  </noscript>
+</body>
+</html>

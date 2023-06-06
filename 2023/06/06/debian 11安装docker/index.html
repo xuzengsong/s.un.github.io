@@ -16,29 +16,25 @@
   <meta name="author" content="Xuxx">
   <meta name="keywords" content="">
   
-    <meta name="description" content="Conda环境 torch环境 自己账户下使用Pytorch123456#执行初始化操作，将Conda环境变量等写入bashrc，然后新连接ssh&#x2F;opt&#x2F;anaconda3&#x2F;bin&#x2F;conda init bash#普通用户执行启动配置source ~&#x2F;.bashrc#激活torch环境conda activate torch  Vscode远程连接1、安装插件 2、连接 3、打开文件夹 4、运行">
+    <meta name="description" content="debian 11安装docker 安装基础工具  1234567sudo apt-get update sudo apt-get install \    apt-transport-https \    ca-certificates \    curl \    gnupg \    lsb-release   安装docker的gpg key：  1curl -fsSL https:&#x2F;&#x2F;d">
 <meta property="og:type" content="article">
-<meta property="og:title" content="linux下使用pytorch(服务器)">
-<meta property="og:url" content="http://example.com/2023/06/05/readme/index.html">
+<meta property="og:title" content="docker常用命令">
+<meta property="og:url" content="http://example.com/2023/06/06/debian%2011%E5%AE%89%E8%A3%85docker/index.html">
 <meta property="og:site_name" content="S.un">
-<meta property="og:description" content="Conda环境 torch环境 自己账户下使用Pytorch123456#执行初始化操作，将Conda环境变量等写入bashrc，然后新连接ssh&#x2F;opt&#x2F;anaconda3&#x2F;bin&#x2F;conda init bash#普通用户执行启动配置source ~&#x2F;.bashrc#激活torch环境conda activate torch  Vscode远程连接1、安装插件 2、连接 3、打开文件夹 4、运行">
+<meta property="og:description" content="debian 11安装docker 安装基础工具  1234567sudo apt-get update sudo apt-get install \    apt-transport-https \    ca-certificates \    curl \    gnupg \    lsb-release   安装docker的gpg key：  1curl -fsSL https:&#x2F;&#x2F;d">
 <meta property="og:locale" content="zh_CN">
-<meta property="og:image" content="https://fastly.jsdelivr.net/gh/xuzengsong/picbed@main//img/image-20230516163153471.png">
-<meta property="og:image" content="https://fastly.jsdelivr.net/gh/xuzengsong/picbed@main//img/image-20230516163334492.png">
-<meta property="og:image" content="https://fastly.jsdelivr.net/gh/xuzengsong/picbed@main//img/image-20230516163437478.png">
-<meta property="og:image" content="https://fastly.jsdelivr.net/gh/xuzengsong/picbed@main//img/image-20230516163726362.png">
-<meta property="og:image" content="https://fastly.jsdelivr.net/gh/xuzengsong/picbed@main//img/image-20230516163855433.png">
-<meta property="og:image" content="https://fastly.jsdelivr.net/gh/xuzengsong/picbed@main//img/image-20230516164043996.png">
-<meta property="article:published_time" content="2023-06-05T02:33:37.000Z">
-<meta property="article:modified_time" content="2023-06-05T06:14:12.288Z">
+<meta property="og:image" content="https://fastly.jsdelivr.net/gh/xuzengsong/picbed@main//img/image-20230606164746448.png">
+<meta property="og:image" content="https://fastly.jsdelivr.net/gh/xuzengsong/picbed@main//img/image-20230606181324784.png">
+<meta property="article:published_time" content="2023-06-06T02:33:35.000Z">
+<meta property="article:modified_time" content="2023-06-06T12:38:49.863Z">
 <meta property="article:author" content="Xuxx">
 <meta property="article:tag" content="node">
 <meta name="twitter:card" content="summary_large_image">
-<meta name="twitter:image" content="https://fastly.jsdelivr.net/gh/xuzengsong/picbed@main//img/image-20230516163153471.png">
+<meta name="twitter:image" content="https://fastly.jsdelivr.net/gh/xuzengsong/picbed@main//img/image-20230606164746448.png">
   
   
   
-  <title>linux下使用pytorch(服务器) - S.un</title>
+  <title>docker常用命令 - S.un</title>
 
   <link  rel="stylesheet" href="https://lib.baomitu.com/twitter-bootstrap/4.6.1/css/bootstrap.min.css" />
 
@@ -231,7 +227,7 @@
       <div class="banner-text text-center fade-in-up">
         <div class="h2">
           
-            <span id="subtitle" data-typed-text="linux下使用pytorch(服务器)"></span>
+            <span id="subtitle" data-typed-text="docker常用命令"></span>
           
         </div>
 
@@ -247,8 +243,8 @@
     
       <span class="post-meta">
         <i class="iconfont icon-date-fill" aria-hidden="true"></i>
-        <time datetime="2023-06-05 10:33" pubdate>
-          2023年6月5日 上午
+        <time datetime="2023-06-06 10:33" pubdate>
+          2023年6月6日 上午
         </time>
       </span>
     
@@ -259,7 +255,7 @@
       <span class="post-meta mr-2">
         <i class="iconfont icon-chart"></i>
         
-          340 字
+          2.1k 字
         
       </span>
     
@@ -270,7 +266,7 @@
         
         
         
-          3 分钟
+          18 分钟
         
       </span>
     
@@ -308,21 +304,55 @@
         <div id="board">
           <article class="post-content mx-auto">
             <!-- SEO header -->
-            <h1 style="display: none">linux下使用pytorch(服务器)</h1>
+            <h1 style="display: none">docker常用命令</h1>
             
             
               <div class="markdown-body">
                 
-                <h2 id="Conda环境"><a href="#Conda环境" class="headerlink" title="Conda环境"></a>Conda环境</h2><p><img src="https://fastly.jsdelivr.net/gh/xuzengsong/picbed@main//img/image-20230516163153471.png" srcset="/img/loading.gif" lazyload alt="image-20230516163153471"></p>
-<h2 id="torch环境"><a href="#torch环境" class="headerlink" title="torch环境"></a>torch环境</h2><p><img src="https://fastly.jsdelivr.net/gh/xuzengsong/picbed@main//img/image-20230516163334492.png" srcset="/img/loading.gif" lazyload alt="image-20230516163334492"></p>
-<h2 id="自己账户下使用Pytorch"><a href="#自己账户下使用Pytorch" class="headerlink" title="自己账户下使用Pytorch"></a>自己账户下使用Pytorch</h2><figure class="highlight cmd"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><code class="hljs cmd">#执行初始化操作，将Conda环境变量等写入bashrc，然后新连接ssh<br>/opt/anaconda3/bin/conda init bash<br>#普通用户执行启动配置<br>source ~/.bashrc<br>#激活torch环境<br>conda activate torch<br></code></pre></td></tr></table></figure>
+                <h1 id="debian-11安装docker"><a href="#debian-11安装docker" class="headerlink" title="debian 11安装docker"></a>debian 11安装docker</h1><ol>
+<li>安装基础工具</li>
+</ol>
+<figure class="highlight text"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><code class="hljs text">sudo apt-get update<br> sudo apt-get install \<br>    apt-transport-https \<br>    ca-certificates \<br>    curl \<br>    gnupg \<br>    lsb-release<br></code></pre></td></tr></table></figure>
 
-<h2 id="Vscode远程连接"><a href="#Vscode远程连接" class="headerlink" title="Vscode远程连接"></a>Vscode远程连接</h2><h3 id="1、安装插件"><a href="#1、安装插件" class="headerlink" title="1、安装插件"></a>1、安装插件</h3><p><img src="https://fastly.jsdelivr.net/gh/xuzengsong/picbed@main//img/image-20230516163437478.png" srcset="/img/loading.gif" lazyload alt="image-20230516163437478"></p>
-<h3 id="2、连接"><a href="#2、连接" class="headerlink" title="2、连接"></a>2、连接</h3><p><img src="https://fastly.jsdelivr.net/gh/xuzengsong/picbed@main//img/image-20230516163726362.png" srcset="/img/loading.gif" lazyload alt="image-20230516163726362"></p>
-<h3 id="3、打开文件夹"><a href="#3、打开文件夹" class="headerlink" title="3、打开文件夹"></a>3、打开文件夹</h3><p><img src="https://fastly.jsdelivr.net/gh/xuzengsong/picbed@main//img/image-20230516163855433.png" srcset="/img/loading.gif" lazyload alt="image-20230516163855433"></p>
-<h3 id="4、运行文件"><a href="#4、运行文件" class="headerlink" title="4、运行文件"></a>4、运行文件</h3><p>如果缺依赖，百度一下安装方式（pip install , conda install 等）</p>
-<p>去linux激活的torch环境下安装(现在默认torch环境公用，需要自己创建环境可参考：<a target="_blank" rel="noopener" href="https://blog.csdn.net/weixin_44021149/article/details/126265328">https://blog.csdn.net/weixin_44021149/article/details/126265328</a>)</p>
-<p><img src="https://fastly.jsdelivr.net/gh/xuzengsong/picbed@main//img/image-20230516164043996.png" srcset="/img/loading.gif" lazyload alt="image-20230516164043996"></p>
+<ol start="2">
+<li>安装docker的gpg key：</li>
+</ol>
+<figure class="highlight text"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs text">curl -fsSL https://download.docker.com/linux/debian/gpg | sudo gpg --dearmor -o /usr/share/keyrings/docker-archive-keyring.gpg<br></code></pre></td></tr></table></figure>
+
+<ol start="3">
+<li>安装docker源</li>
+</ol>
+<figure class="highlight text"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs text">echo &quot;deb [arch=amd64 signed-by=/usr/share/keyrings/docker-archive-keyring.gpg] https://download.docker.com/linux/debian $(lsb_release -cs) stable&quot; | sudo tee /etc/apt/sources.list.d/docker.list &gt; /dev/null<br></code></pre></td></tr></table></figure>
+
+<p>上面命令中的<code>lsb_release -cs</code>返回<code>bullseye</code>，也就是debian11的代号。</p>
+<ol start="4">
+<li>安装docker</li>
+</ol>
+<figure class="highlight text"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><code class="hljs text">apt-get update<br>sudo apt-get install docker-ce docker-ce-cli containerd.io<br></code></pre></td></tr></table></figure>
+
+<p>至此安装完成。</p>
+<p>在debian系的Linux发行版上，docker会开机启动启动。</p>
+<p>如果平时使用非root账户，又不想每次执行docker命令之前都加上sudo，参考docker的<a href="https://link.zhihu.com/?target=https://docs.docker.com/engine/install/linux-postinstall/%23manage-docker-as-a-non-root-user">文档</a>，可以添加<code>docker</code>组，并将非root账户加入到该组中。下面的命令创建<code>docker</code>组并将当前用户加入<code>docker</code>组，执行完成之后重新登陆生效：</p>
+<figure class="highlight text"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><code class="hljs text">sudo groupadd docker<br>sudo usermod -aG docker $USER<br></code></pre></td></tr></table></figure>
+
+<h1 id="启动相关命令"><a href="#启动相关命令" class="headerlink" title="启动相关命令"></a>启动相关命令</h1><figure class="highlight cmd"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><code class="hljs cmd">#启动docker<br>systemctl <span class="hljs-built_in">start</span> docker<br>#查看docker状态<br>systemctl status docker<br>#停掉docker<br>systemctl stop docker<br>#重启docker<br>systemctl restart docker<br>#开机自启docker<br>systemctl enable docker<br></code></pre></td></tr></table></figure>
+
+<h1 id="镜像相关命令"><a href="#镜像相关命令" class="headerlink" title="镜像相关命令"></a>镜像相关命令</h1><figure class="highlight cmd"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><code class="hljs cmd">#查看镜像<br>docker images<br>#查看所有镜像id<br>docker images -q<br>#搜索镜像（redis）<br>docker search redis<br>#下载<br>docker pull redis<br>#删除docker<br>docker rmi [image id]<br>#删除所有镜像<br>docker rmi `docker images -q`<br></code></pre></td></tr></table></figure>
+
+<h1 id="容器相关命令"><a href="#容器相关命令" class="headerlink" title="容器相关命令"></a>容器相关命令</h1><figure class="highlight cmd"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br></pre></td><td class="code"><pre><code class="hljs cmd">docker run -it --name=mysql mysql:<span class="hljs-number">5</span>.<span class="hljs-number">7</span> /bin/bash<br>#-i 保持容器一直运行<br>#-t 给容器分配个伪终端，可以输入命令（输入<span class="hljs-keyword">exit</span>()后退出）<br>#--name 给容器取名<br>#mysql:<span class="hljs-number">5</span>.<span class="hljs-number">7</span> 使用哪个镜像<br>#/bin/bash 进入容器的初始化指令<br><br>docker run -id --name=mysql1 mysql:<span class="hljs-number">5</span>.<span class="hljs-number">7</span> <br>#-d 后台运行容器（输入<span class="hljs-keyword">exit</span>()后不退出）<br>docker exec -it mysql1 /bin/bash #进入容器<br><br>docker ps #查看正在运行的容器<br>docker ps -a #查看所有容器<br><br>docker stop mysql1 #关闭容器<br>docker <span class="hljs-built_in">start</span> mysql1 #开启容器<br>docker rm [名称，id] #删除容器<br>docker rm `docker ps -aq` #删除所有容器<br>docker inspect mysql1 #查看容器名称<br></code></pre></td></tr></table></figure>
+
+
+
+<h1 id="容器数据卷"><a href="#容器数据卷" class="headerlink" title="容器数据卷"></a>容器数据卷</h1><img src="https://fastly.jsdelivr.net/gh/xuzengsong/picbed@main//img/image-20230606164746448.png" srcset="/img/loading.gif" lazyload alt="image-20230606164746448" style="zoom: 33%;" />
+
+<figure class="highlight cmd"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><code class="hljs cmd">#创建启动容器时，使用-V参数设置数据卷<br>docker run ... -v 宿主机目求（文件）：容器内日录（文件）<br>#例子<br>docker run -it --name=cl -v /root/data:/root/data_container mysql:<span class="hljs-number">5</span>.<span class="hljs-number">7</span> /bin/bash<br>#注意事项：<br>#<span class="hljs-number">1</span>.目录必须是绝对路径<br>#<span class="hljs-number">2</span>.如果目录不存在，会自动创建<br>#<span class="hljs-number">3</span>.可以挂载多个数据卷<br>docker run -it --name=c2 \<br>-v ~/data2:/root/data2 \<br>-v ~/data3:/root/data3 \<br><span class="hljs-function">mysql:5.7</span><br><span class="hljs-function"></span><br><span class="hljs-function">#两个容器挂载同一个目录</span><br><span class="hljs-function"><span class="hljs-title">docker</span> <span class="hljs-title">run</span> -<span class="hljs-title">it</span> --<span class="hljs-title">name</span>=<span class="hljs-title">c3</span> -<span class="hljs-title">v</span> ~/<span class="hljs-title">data</span>:/<span class="hljs-title">root</span>/<span class="hljs-title">data</span> <span class="hljs-title">centos</span>:7</span><br><span class="hljs-function"><span class="hljs-title">docker</span> <span class="hljs-title">run</span> -<span class="hljs-title">it</span> --<span class="hljs-title">name</span>=<span class="hljs-title">c4</span> -<span class="hljs-title">v</span> ~/<span class="hljs-title">data</span>:/<span class="hljs-title">root</span>/<span class="hljs-title">data</span> <span class="hljs-title">centos</span>:7</span><br></code></pre></td></tr></table></figure>
+
+
+
+<h1 id="数据卷容器"><a href="#数据卷容器" class="headerlink" title="数据卷容器"></a>数据卷容器</h1><img src="https://fastly.jsdelivr.net/gh/xuzengsong/picbed@main//img/image-20230606181324784.png" srcset="/img/loading.gif" lazyload alt="image-20230606181324784" style="zoom:33%;" />
+
+<figure class="highlight cmd"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><code class="hljs cmd">#多容器进行数据交换<br>#<span class="hljs-number">1</span>.多个容器挂载同一个数据卷<br>#<span class="hljs-number">2</span>.数据卷容器<br>#可以直接删c3，不影响挂载。<br>docker run -it --name=c3 -v /volume centos:<span class="hljs-number">7</span> /bin/bash<br>docker run -it --name=c1 --volumes-from c3 centos:<span class="hljs-number">7</span> /bin/bash<br>docker run -it --name=c2 --volumes-from c3 centos:<span class="hljs-number">7</span> /bin/bash<br></code></pre></td></tr></table></figure>
+
 
                 
               </div>
@@ -346,7 +376,7 @@
   
     <span>></span>
     
-  <a href="/categories/%E5%B7%A5%E5%85%B7/linux/" class="category-chain-item">linux</a>
+  <a href="/categories/%E5%B7%A5%E5%85%B7/docker/" class="category-chain-item">docker</a>
   
   
 
@@ -375,8 +405,8 @@
 
   <div class="license-box my-3">
     <div class="license-title">
-      <div>linux下使用pytorch(服务器)</div>
-      <div>http://example.com/2023/06/05/readme/</div>
+      <div>docker常用命令</div>
+      <div>http://example.com/2023/06/06/debian 11安装docker/</div>
     </div>
     <div class="license-meta">
       
@@ -388,7 +418,7 @@
       
         <div class="license-meta-item license-meta-date">
           <div>发布于</div>
-          <div>2023年6月5日</div>
+          <div>2023年6月6日</div>
         </div>
       
       
@@ -420,18 +450,12 @@
                   <article class="post-prev col-6">
                     
                     
-                      <a href="/2023/06/06/Debian11%20%E7%B3%BB%E7%BB%9F%E7%8E%AF%E5%A2%83%E5%88%9D%E5%A7%8B%E5%8C%96/" title="debian初始化安装">
-                        <i class="iconfont icon-arrowleft"></i>
-                        <span class="hidden-mobile">debian初始化安装</span>
-                        <span class="visible-mobile">上一篇</span>
-                      </a>
-                    
                   </article>
                   <article class="post-next col-6">
                     
                     
-                      <a href="/2023/06/05/%E6%96%87%E4%BB%B6%E6%A0%BC%E5%BC%8F%E8%AE%BE%E8%AE%A1/" title="文件格式设计">
-                        <span class="hidden-mobile">文件格式设计</span>
+                      <a href="/2023/06/06/Debian11%20%E7%B3%BB%E7%BB%9F%E7%8E%AF%E5%A2%83%E5%88%9D%E5%A7%8B%E5%8C%96/" title="debian初始化安装">
+                        <span class="hidden-mobile">debian初始化安装</span>
                         <span class="visible-mobile">下一篇</span>
                         <i class="iconfont icon-arrowright"></i>
                       </a>
