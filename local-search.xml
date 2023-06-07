@@ -31,6 +31,33 @@
   
   
   <entry>
+    <title>防火墙</title>
+    <link href="/2023/06/07/%E9%98%B2%E7%81%AB%E5%A2%99/"/>
+    <url>/2023/06/07/%E9%98%B2%E7%81%AB%E5%A2%99/</url>
+    
+    <content type="html"><![CDATA[<h1 id="防火墙"><a href="#防火墙" class="headerlink" title="防火墙"></a>防火墙</h1><p>查看端口</p><figure class="highlight cmd"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><code class="hljs cmd">#查看具体端口<br>netstat -anp | grep <span class="hljs-number">8080</span><br>netstat -tln | grep <span class="hljs-number">8080</span><br><br>#查看所有端口<br>netstat -anp<br>#只看server(最多)<br>netstat -tln<br><br>#查看具体端口被哪个程序占用<br>lsof -i :<span class="hljs-number">8080</span><br><br>#杀掉进程,<span class="hljs-number">2597932</span>为PID<br>kill -<span class="hljs-number">9</span> <span class="hljs-number">2597932</span><br><br><br></code></pre></td></tr></table></figure><p>防火墙</p><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br></pre></td><td class="code"><pre><code class="hljs shell"><span class="hljs-meta prompt_">#</span><span class="language-bash">安装 UFW：</span><br>apt-get install ufw<br><span class="hljs-meta prompt_"></span><br><span class="hljs-meta prompt_">#</span><span class="language-bash">查看状态</span><br>ufw status<br><span class="hljs-meta prompt_"></span><br><span class="hljs-meta prompt_">#</span><span class="language-bash">添加规则，只对外开放端口 22, 80, 443 端口：</span><br>ufw allow 22/tcp<br>ufw allow 80/tcp<br>ufw allow 443/tcp<br><span class="hljs-meta prompt_"></span><br><span class="hljs-meta prompt_">#</span><span class="language-bash">开启防火墙：</span><br>ufw enable<br><span class="hljs-meta prompt_"></span><br><span class="hljs-meta prompt_">#</span><span class="language-bash">如果防火墙之前已经开启了，只需要重载规则：</span><br>ufw reload<br><span class="hljs-meta prompt_"></span><br><span class="hljs-meta prompt_">#</span><span class="language-bash">删除规则</span><br><span class="hljs-meta prompt_">#</span><span class="language-bash">获得规则编号</span><br>sudo ufw status numbered<br>sudo ufw delete 2<br></code></pre></td></tr></table></figure>]]></content>
+    
+    
+    <categories>
+      
+      <category>工具</category>
+      
+      <category>linux</category>
+      
+    </categories>
+    
+    
+    <tags>
+      
+      <tag>node</tag>
+      
+    </tags>
+    
+  </entry>
+  
+  
+  
+  <entry>
     <title>debian初始化安装</title>
     <link href="/2023/06/06/Debian11%20%E7%B3%BB%E7%BB%9F%E7%8E%AF%E5%A2%83%E5%88%9D%E5%A7%8B%E5%8C%96/"/>
     <url>/2023/06/06/Debian11%20%E7%B3%BB%E7%BB%9F%E7%8E%AF%E5%A2%83%E5%88%9D%E5%A7%8B%E5%8C%96/</url>
