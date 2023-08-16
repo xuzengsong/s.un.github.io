@@ -60,8 +60,13 @@
 <meta property="og:image" content="https://fastly.jsdelivr.net/gh/xuzengsong/picbed@main//img/replaceBlank.gif">
 <meta property="og:image" content="https://fastly.jsdelivr.net/gh/xuzengsong/picbed@main//img/image-20230411095851122.png">
 <meta property="og:image" content="https://fastly.jsdelivr.net/gh/xuzengsong/picbed@main//img/image-20230411100921675.png">
+<meta property="og:image" content="https://fastly.jsdelivr.net/gh/xuzengsong/picbed@main//img/91c71fba111b52580bd0f99bd77f386ae26055b6ffb015c3df9dc26204e8465a.jpg">
+<meta property="og:image" content="https://fastly.jsdelivr.net/gh/xuzengsong/picbed@main//img/ccceac397062b8ac6d369506f5481be5e473d4f9b35751da7861a681bbecc3e8.jpg">
+<meta property="og:image" content="https://fastly.jsdelivr.net/gh/xuzengsong/picbed@main//img/a0d29f1322a7938733fd62f3b2de8b04f678591e40cdf4062810e8d9608e4b5e.jpg">
+<meta property="og:image" content="https://fastly.jsdelivr.net/gh/xuzengsong/picbed@main//img/daa19672855195ae1496f6a3f112dbe9fe0e16e9541238002acaac44f22be613.jpg">
+<meta property="og:image" content="https://fastly.jsdelivr.net/gh/xuzengsong/picbed@main//img/3dcbb1028ed9cdac95fdc8c8348ccc6f2e4c50b3fd8222e5690257d6b495090a.gif">
 <meta property="article:published_time" content="2023-03-22T02:33:33.000Z">
-<meta property="article:modified_time" content="2023-06-06T02:29:00.628Z">
+<meta property="article:modified_time" content="2023-07-21T07:22:36.978Z">
 <meta property="article:author" content="Xuxx">
 <meta property="article:tag" content="node">
 <meta name="twitter:card" content="summary_large_image">
@@ -290,7 +295,7 @@
       <span class="post-meta mr-2">
         <i class="iconfont icon-chart"></i>
         
-          53k 字
+          55k 字
         
       </span>
     
@@ -301,7 +306,7 @@
         
         
         
-          442 分钟
+          463 分钟
         
       </span>
     
@@ -1245,6 +1250,45 @@
 <p><strong>中序：</strong>左中右</p>
 <p><strong>后续：</strong>左右中</p>
 <figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br></pre></td><td class="code"><pre><code class="hljs java"><span class="hljs-comment">// 前序遍历·递归·LC144_二叉树的前序遍历</span><br><span class="hljs-keyword">class</span> <span class="hljs-title class_">Solution</span> &#123;<br>    <span class="hljs-keyword">public</span> List&lt;Integer&gt; <span class="hljs-title function_">preorderTraversal</span><span class="hljs-params">(TreeNode root)</span> &#123;<br>        List&lt;Integer&gt; result = <span class="hljs-keyword">new</span> <span class="hljs-title class_">ArrayList</span>&lt;Integer&gt;();<br>        preorder(root, result);<br>        <span class="hljs-keyword">return</span> result;<br>    &#125;<br><br>    <span class="hljs-keyword">public</span> <span class="hljs-keyword">void</span> <span class="hljs-title function_">preorder</span><span class="hljs-params">(TreeNode root, List&lt;Integer&gt; result)</span> &#123;<br>        <span class="hljs-keyword">if</span> (root == <span class="hljs-literal">null</span>) &#123;<br>            <span class="hljs-keyword">return</span>;<br>        &#125;<br>        result.add(root.val);<br>        preorder(root.left, result);<br>        preorder(root.right, result);<br>    &#125;<br>&#125;<br><span class="hljs-comment">// 中序遍历·递归·LC94_二叉树的中序遍历</span><br><span class="hljs-keyword">class</span> <span class="hljs-title class_">Solution</span> &#123;<br>    <span class="hljs-keyword">public</span> List&lt;Integer&gt; <span class="hljs-title function_">inorderTraversal</span><span class="hljs-params">(TreeNode root)</span> &#123;<br>        List&lt;Integer&gt; res = <span class="hljs-keyword">new</span> <span class="hljs-title class_">ArrayList</span>&lt;&gt;();<br>        inorder(root, res);<br>        <span class="hljs-keyword">return</span> res;<br>    &#125;<br><br>    <span class="hljs-keyword">void</span> <span class="hljs-title function_">inorder</span><span class="hljs-params">(TreeNode root, List&lt;Integer&gt; list)</span> &#123;<br>        <span class="hljs-keyword">if</span> (root == <span class="hljs-literal">null</span>) &#123;<br>            <span class="hljs-keyword">return</span>;<br>        &#125;<br>        inorder(root.left, list);<br>        list.add(root.val);             <span class="hljs-comment">// 注意这一句</span><br>        inorder(root.right, list);<br>    &#125;<br>&#125;<br><span class="hljs-comment">// 后序遍历·递归·LC145_二叉树的后序遍历</span><br><span class="hljs-keyword">class</span> <span class="hljs-title class_">Solution</span> &#123;<br>    <span class="hljs-keyword">public</span> List&lt;Integer&gt; <span class="hljs-title function_">postorderTraversal</span><span class="hljs-params">(TreeNode root)</span> &#123;<br>        List&lt;Integer&gt; res = <span class="hljs-keyword">new</span> <span class="hljs-title class_">ArrayList</span>&lt;&gt;();<br>        postorder(root, res);<br>        <span class="hljs-keyword">return</span> res;<br>    &#125;<br><br>    <span class="hljs-keyword">void</span> <span class="hljs-title function_">postorder</span><span class="hljs-params">(TreeNode root, List&lt;Integer&gt; list)</span> &#123;<br>        <span class="hljs-keyword">if</span> (root == <span class="hljs-literal">null</span>) &#123;<br>            <span class="hljs-keyword">return</span>;<br>        &#125;<br>        postorder(root.left, list);<br>        postorder(root.right, list);<br>        list.add(root.val);             <span class="hljs-comment">// 注意这一句</span><br>    &#125;<br>&#125;<br></code></pre></td></tr></table></figure>
+
+<h1 id="动态规划"><a href="#动态规划" class="headerlink" title="动态规划"></a>动态规划</h1><h2 id="打家劫舍"><a href="#打家劫舍" class="headerlink" title="打家劫舍"></a>打家劫舍</h2><p><strong>步骤一：定义子问题</strong></p>
+<p>稍微接触过一点动态规划的朋友都知道动态规划有一个 “子问题” 的定义。什么是子问题？子问题是和原问题相似，但规模较小的问题。例如这道小偷问题，原问题是 “从全部房子中能偷到的最大金额”，将问题的规模缩小，子问题就是 “从$ k $个房子中能偷到的最大金额 ”，用 $f(k) $表示。</p>
+<p><img src="https://fastly.jsdelivr.net/gh/xuzengsong/picbed@main//img/91c71fba111b52580bd0f99bd77f386ae26055b6ffb015c3df9dc26204e8465a.jpg" srcset="/img/loading.gif" lazyload alt="小偷问题的子问题定义"></p>
+<p>可以看到，子问题是参数化的，我们定义的子问题中有参数$k$。假设一共有 $n $个房子的话，就一共有$ n$ 个子问题。动态规划实际上就是通过求这一堆子问题的解，来求出原问题的解。这要求子问题需要具备两个性质：</p>
+<ul>
+<li>  原问题要能由子问题表示。例如这道小偷问题中，$ k=n$ 时实际上就是原问题。否则，解了半天子问题还是解不出原问题，那子问题岂不是白解了。</li>
+<li>  一个子问题的解要能通过其他子问题的解求出。例如这道小偷问题中，$f(k) $可以由$ f(k−1) $和 $f(k−2)$ 求出，具体原理后面会解释。这个性质就是教科书中所说的“最优子结构”。如果定义不出这样的子问题，那么这道题实际上没法用动态规划解。</li>
+</ul>
+<p>小偷问题由于比较简单，定义子问题实际上是很直观的。一些比较难的动态规划题目可能需要一些定义子问题的技巧</p>
+<p><strong>步骤二：写出子问题的递推关系</strong></p>
+<p>这一步是求解动态规划问题最关键的一步。然而，这一步也是最无法在代码中体现出来的一步。在做题的时候，最好把这一步的思路用注释的形式写下来。做动态规划题目不要求快，而要确保无误。否则，写代码五分钟，找 bug 半小时，岂不美哉？</p>
+<p>我们来分析一下这道小偷问题的递推关系：</p>
+<p>假设一共有 $n$ 个房子，每个房子的金额分别是$H_0, H_1, \dots, H_{n-1}$，子问题$ f(k)$ 表示从前 $k$ 个房子（即$H_0, H_1, \dots, H_{k-1}$）中能偷到的最大金额。那么，偷$ k $个房子有两种偷法：</p>
+<p><img src="https://fastly.jsdelivr.net/gh/xuzengsong/picbed@main//img/ccceac397062b8ac6d369506f5481be5e473d4f9b35751da7861a681bbecc3e8.jpg" srcset="/img/loading.gif" lazyload alt="子问题的递推关系"></p>
+<p>$k $个房子中最后一个房子是$H_{k-1} $。如果不偷这个房子，那么问题就变成在前 $k-1 $ 个房子中偷到最大的金额，也就是子问题 f(k-1) 。如果偷这个房子，那么前一个房子 $H_{k-2}$显然不能偷，其他房子不受影响。那么问题就变成在前 $k-2$ 个房子中偷到的最大的金额。两种情况中，选择金额较大的一种结果。</p>
+<p>$f ( k ) = max ⁡ { f ( k − 1 ) , H_{k − 1} + f ( k − 2 ) } $</p>
+<p>在写递推关系的时候，要注意写上 $k = 0$ 和 $k = 1$的基本情况：</p>
+<ul>
+<li>  当 $k = 0$时，没有房子，所以 $f ( 0 ) = 0$ 。</li>
+<li>  当$ k = 1 $时，只有一个房子，偷这个房子即可，所以 $f ( 1 ) = H_0$ 。</li>
+</ul>
+<p>这样才能构成完整的递推关系，后面写代码也不容易在边界条件上出错。</p>
+<p><strong>步骤三：确定 DP 数组的计算顺序</strong></p>
+<p>在确定了子问题的递推关系之后，下一步就是依次计算出这些子问题了。在很多教程中都会写，动态规划有两种计算顺序，一种是自顶向下的、使用备忘录的递归方法，一种是自底向上的、使用 $dp$ 数组的循环方法。不过<strong>在普通的动态规划题目中，99% 的情况我们都不需要用到备忘录方法</strong>，所以我们最好坚持用自底向上的$ dp$ 数组。</p>
+<p>$DP $数组也可以叫”子问题数组”，因为 $DP$ 数组中的每一个元素都对应一个子问题。如下图所示，$dp[k]$ 对应子问题 $ f(k)$，即偷前 $ k $间房子的最大金额。</p>
+<p><img src="https://fastly.jsdelivr.net/gh/xuzengsong/picbed@main//img/a0d29f1322a7938733fd62f3b2de8b04f678591e40cdf4062810e8d9608e4b5e.jpg" srcset="/img/loading.gif" lazyload alt="DP 数组与子问题的对应关系"></p>
+<p>那么，只要搞清楚了子问题的计算顺序，就可以确定 $DP$ 数组的计算顺序。对于小偷问题，我们分析子问题的依赖关系，发现每个 $f ( k ) $ 依赖$f(k-1) $和$ f(k-2)$。也就是说，$dp[k]$ 依赖 $dp[k-1]$和 $dp[k-2]$，如下图所示。</p>
+<p><img src="https://fastly.jsdelivr.net/gh/xuzengsong/picbed@main//img/daa19672855195ae1496f6a3f112dbe9fe0e16e9541238002acaac44f22be613.jpg" srcset="/img/loading.gif" lazyload alt="DP 数组的依赖顺序"></p>
+<p>那么，既然 $DP$ 数组中的依赖关系都是向右指的，$DP$ 数组的计算顺序就是从左向右。这样我们可以保证，计算一个子问题的时候，它所依赖的那些子问题已经计算出来了。</p>
+<p>确定了 $DP $数组的计算顺序之后，我们就可以写出题解代码了：</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br></pre></td><td class="code"><pre><code class="hljs java"><span class="hljs-keyword">public</span> <span class="hljs-type">int</span> <span class="hljs-title function_">rob</span><span class="hljs-params">(<span class="hljs-type">int</span>[] nums)</span> &#123;<br>    <span class="hljs-keyword">if</span> (nums.length == <span class="hljs-number">0</span>) &#123;<br>        <span class="hljs-keyword">return</span> <span class="hljs-number">0</span>;<br>    &#125;<br>    <span class="hljs-comment">// 子问题：</span><br>    <span class="hljs-comment">// f(k) = 偷 [0..k) 房间中的最大金额</span><br><br>    <span class="hljs-comment">// f(0) = 0</span><br>    <span class="hljs-comment">// f(1) = nums[0]</span><br>    <span class="hljs-comment">// f(k) = max&#123; rob(k-1), nums[k-1] + rob(k-2) &#125;</span><br><br>    <span class="hljs-type">int</span> <span class="hljs-variable">N</span> <span class="hljs-operator">=</span> nums.length;<br>    <span class="hljs-type">int</span>[] dp = <span class="hljs-keyword">new</span> <span class="hljs-title class_">int</span>[N+<span class="hljs-number">1</span>];<br>    dp[<span class="hljs-number">0</span>] = <span class="hljs-number">0</span>;<br>    dp[<span class="hljs-number">1</span>] = nums[<span class="hljs-number">0</span>];<br>    <span class="hljs-keyword">for</span> (<span class="hljs-type">int</span> <span class="hljs-variable">k</span> <span class="hljs-operator">=</span> <span class="hljs-number">2</span>; k &lt;= N; k++) &#123;<br>        dp[k] = Math.max(dp[k-<span class="hljs-number">1</span>], nums[k-<span class="hljs-number">1</span>] + dp[k-<span class="hljs-number">2</span>]);<br>    &#125;<br>    <span class="hljs-keyword">return</span> dp[N];<br>&#125;<br><br></code></pre></td></tr></table></figure>
+
+<p><strong>步骤四：空间优化</strong></p>
+<p>空间优化是动态规划问题的进阶内容了。对于初学者来说，可以不掌握这部分内容。</p>
+<p>空间优化的基本原理是，很多时候我们并不需要始终持有全部的 $DP$ 数组。对于小偷问题，我们发现，最后一步计算$f(n) $的时候，实际上只用到了 $ f(n-1) $ 和 $ f(n-2) $的结果。$n-3$之前的子问题，实际上早就已经用不到了。那么，我们可以只用两个变量保存两个子问题的结果，就可以依次计算出所有的子问题。下面的动图比较了空间优化前和优化后的对比关系：</p>
+<p><img src="https://fastly.jsdelivr.net/gh/xuzengsong/picbed@main//img/3dcbb1028ed9cdac95fdc8c8348ccc6f2e4c50b3fd8222e5690257d6b495090a.gif" srcset="/img/loading.gif" lazyload alt="空间优化前后对比（动图）"></p>
+<p>这样一来，空间复杂度也从$ O(n) $降到了$O(1)$。优化后的代码如下所示：</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><code class="hljs java"><span class="hljs-keyword">public</span> <span class="hljs-type">int</span> <span class="hljs-title function_">rob</span><span class="hljs-params">(<span class="hljs-type">int</span>[] nums)</span> &#123;<br>    <span class="hljs-type">int</span> <span class="hljs-variable">prev</span> <span class="hljs-operator">=</span> <span class="hljs-number">0</span>;<br>    <span class="hljs-type">int</span> <span class="hljs-variable">curr</span> <span class="hljs-operator">=</span> <span class="hljs-number">0</span>;<br><br>    <span class="hljs-comment">// 每次循环，计算“偷到当前房子为止的最大金额”</span><br>    <span class="hljs-keyword">for</span> (<span class="hljs-type">int</span> i : nums) &#123;<br>        <span class="hljs-comment">// 循环开始时，curr 表示 dp[k-1]，prev 表示 dp[k-2]</span><br>        <span class="hljs-comment">// dp[k] = max&#123; dp[k-1], dp[k-2] + i &#125;</span><br>        <span class="hljs-type">int</span> <span class="hljs-variable">temp</span> <span class="hljs-operator">=</span> Math.max(curr, prev + i);<br>        prev = curr;<br>        curr = temp;<br>        <span class="hljs-comment">// 循环结束时，curr 表示 dp[k]，prev 表示 dp[k-1]</span><br>    &#125;<br><br>    <span class="hljs-keyword">return</span> curr;<br>&#125;<br><br></code></pre></td></tr></table></figure>
 
 
                 
